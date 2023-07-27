@@ -1,0 +1,320 @@
+.header .nav-top {
+  margin: 2.5rem 0 2.7rem 0;
+}
+.header .nav-top .nav-lang {
+  margin-right: 3rem;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--color-dustyrose);
+}
+.header .nav-top .nav-logo {
+  text-align: center;
+  font-family: Didot;
+  font-size: 3.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 4rem;
+}
+.header .nav-top .nav-cart {
+  margin-right: 3rem;
+}
+.header .nav-bottom a {
+  margin-right: 7rem;
+  margin-bottom: 3.5rem;
+}
+
+.home {
+  height: auto;
+}
+.home .col-md-5 .container-text {
+  height: auto;
+  margin-top: 12.4rem;
+  max-width: 81rem;
+  z-index: 22;
+}
+.home .col-md-5 .container-text span {
+  display: inline-block;
+  max-width: 40.7rem;
+  margin: 4rem 0 4rem 0;
+}
+.home .col-md-5 .container-text button img {
+  width: 2.2rem;
+  margin-right: 2rem;
+}
+.home .col-md-7 .container-img {
+  max-height: 75.7rem;
+  position: relative;
+}
+.home .col-md-7 .container-img .overlay {
+  border-radius: 5px 5px 0px 0px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(7.5px);
+          backdrop-filter: blur(7.5px);
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 33rem;
+  bottom: 0;
+}
+
+.about .container-fluid h2 {
+  margin-bottom: 6rem;
+}
+.about .container-fluid .col-12 .about-text {
+  max-width: 48.3rem;
+  margin-left: 6.6rem;
+}
+.about .container {
+  margin-top: 13rem;
+}
+.about .container h2 {
+  color: var(--color-primary) !important;
+  margin-bottom: 2.3rem;
+}
+
+.contact h2 {
+  margin-bottom: 6rem;
+}
+.contact .col-12 .input {
+  margin-bottom: 1.5rem;
+}
+.contact .col-12 form {
+  margin-right: 13rem;
+}
+.contact .col-12 form .textarea {
+  margin-bottom: 2rem;
+}
+
+.account .container-fluid .account-box {
+  border-radius: 10px;
+  background: #dfd7cf;
+  padding: 4rem 7rem 5.5rem 2rem;
+}
+.account .container-fluid .account-box .account-box_image {
+  width: 2.4rem;
+}
+.account .container-fluid .account-box p {
+  font-family: Didot;
+  font-size: 32px;
+  font-weight: 700 !important;
+  line-height: 32px;
+  margin-bottom: 5rem;
+}
+.account .container-fluid .account-box .d-flex {
+  margin-bottom: 3rem;
+}
+.account .container-fluid .account-box .d-flex:hover {
+  cursor: pointer;
+}
+.account .container-fluid .account-box .d-flex span {
+  margin-left: 1.5rem;
+}
+.account .container-fluid .account-box .d-flex:nth-child(3) {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-white);
+}
+.account .container-fluid form {
+  margin-left: 13.7rem;
+}
+.account .container-fluid form .input {
+  margin-bottom: 1rem;
+}
+.account .container-fluid form .primary-button {
+  margin-top: 2rem;
+}
+.account .container-fluid form .position-absolute {
+  top: 2rem;
+  right: 2rem;
+}
+
+.checkout .container-fluid h2 {
+  margin-bottom: 6rem;
+}
+.checkout .container-fluid form .information {
+  margin-bottom: 3rem;
+}
+.checkout .container-fluid form .payment-method, .checkout .container-fluid form .delivery-method {
+  margin-top: 5rem !important;
+}
+.checkout .container-fluid form .right_form {
+  margin-right: 2rem;
+}
+.checkout .container-fluid form .input {
+  margin-bottom: 1rem;
+  padding-right: 4.5rem;
+}
+.checkout .container-fluid form button {
+  margin-top: 5rem;
+}
+.checkout .container-fluid form .d-flex .label:first-child {
+  margin-right: 10rem !important;
+}
+.checkout .container-fluid form .d-flex .label input[type=radio] {
+  margin-right: 2rem;
+  margin-bottom: 1.8rem;
+}
+
+.login .container-fluid .login-col {
+  padding: 3.8rem 0 0 3rem;
+}
+.login .container-fluid .login-col .login_home {
+  margin-bottom: 19rem;
+}
+.login .container-fluid .login-col .login_home i {
+  color: var(--color-primary);
+  margin-right: 2rem;
+}
+.login .container-fluid .login-col .login_home span {
+  color: var(--color-primary);
+}
+.login .container-fluid .login-col form {
+  margin-right: 13.6rem;
+}
+.login .container-fluid .login-col form h3 {
+  margin-bottom: 5rem;
+}
+.login .container-fluid .login-col form .input {
+  margin-bottom: 1.5rem;
+}
+.login .container-fluid .login-col form .position-absolute {
+  top: 2rem;
+  right: 2rem;
+}
+.login .container-fluid .login-col form .forget-password {
+  display: block;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 1.7rem;
+  cursor: pointer;
+}
+.login .container-fluid .login-col form button {
+  margin-bottom: 7rem;
+}
+.login .container-fluid .login-col form .d-flex {
+  margin-bottom: 37.5rem;
+}
+.login .container-fluid .login-col form .d-flex span:last-child {
+  color: var(--color-primary);
+  margin-left: 2rem;
+  cursor: pointer;
+}
+.login .container-fluid .col-md-6 .login-img {
+  background: url("../img/loginback.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
+.modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal .modal-body p {
+  text-align: center;
+  font-family: Didot;
+  font-size: 32px;
+  font-weight: 700 !important;
+  line-height: 32px;
+  margin-bottom: 3.6rem;
+}
+.modal .modal-body span {
+  display: block;
+  max-width: 35.3rem;
+  margin-bottom: 3.4rem;
+}
+.modal .modal-body button {
+  margin-bottom: 4.5rem;
+}
+
+.notfound {
+  height: 50vh;
+}
+.notfound p {
+  color: #2D2D2B;
+  text-align: center;
+  font-family: Didot;
+  font-size: 180px !important;
+  font-weight: 700;
+  line-height: 129px;
+}
+.notfound h3 {
+  color: var(--black, #2D2D2B);
+  text-align: center;
+  font-family: Raleway !important;
+  font-weight: 500 !important;
+  line-height: 42px;
+}
+
+.footer {
+  margin-top: 15rem;
+}
+
+@media screen and (max-width: 767px) {
+  .header .nav-bottom a {
+    margin-right: 3rem !important;
+  }
+  .home .container-text {
+    position: relative !important;
+    margin-top: 7rem !important;
+    margin-bottom: 5rem !important;
+  }
+  .home .container-text h1 {
+    font-size: 32px !important;
+    line-height: 36px !important;
+  }
+  .home .container-text .primary-button {
+    padding: 1.7rem 7.8rem !important;
+  }
+  .about .about-text {
+    margin-top: 3rem !important;
+  }
+  .contact .contact-img {
+    margin-top: 5rem;
+  }
+  .contact form {
+    margin-right: 0 !important;
+  }
+  .login .login_home {
+    margin-bottom: 4rem !important;
+  }
+  .login h3 {
+    font-size: 2.4rem !important;
+    line-height: 3.2rem !important;
+  }
+  .login .login-img {
+    height: 32rem !important;
+  }
+  .login form .d-flex {
+    margin-bottom: 4rem !important;
+  }
+  .checkout h2 {
+    font-size: 2.4rem !important;
+    line-height: 3.2rem !important;
+  }
+}
+@media screen and (max-width: 580px) {
+  .nav-top .mobile-none {
+    display: none !important;
+  }
+  .nav-top .nav-bar {
+    margin-left: 2.5rem;
+  }
+  .nav-top .d-none {
+    display: flex !important;
+  }
+  .nav-bottom {
+    display: none !important;
+  }
+  .about h2 {
+    font-size: 2.4rem !important;
+    line-height: 3.2rem !important;
+  }
+  .about .about-text {
+    margin-left: 0 !important;
+  }
+  .contact h2 {
+    font-size: 2.4rem !important;
+    line-height: 3.2rem !important;
+  }
+}/*# sourceMappingURL=style.css.map */
