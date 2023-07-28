@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Button, Card, Col, Modal } from "react-bootstrap";
+import { Button, Card, Modal } from "react-bootstrap";
 import img1 from "../assets/img/heart.svg";
 import { useState } from "react";
 import { useCart } from "react-use-cart";
@@ -15,9 +15,9 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
 
   const { addItem } = useCart();
   return (
-    <Col md={6} lg={4} sm={12}>
-      <Card className="border-0">
-        <div className="card-img">
+      <Card className="border-0 me-4">
+       <div className="position-relative">
+       <div className="card-img img-fluid">
           <Card.Img variant="top" src={img[0]} />
         </div>
         <div className="overlay text-end">
@@ -133,6 +133,7 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
             </Modal>
           </div>
         </div>
+       </div>
         <Card.Body>
           <LinkContainer to={`/products/${slugify(title)}`}>
             <p className="card-title">{title}</p>
@@ -145,7 +146,6 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
           </div>
         </div>
       </Card>
-    </Col>
   );
 };
 

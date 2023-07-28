@@ -1,7 +1,7 @@
 // import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { ProductContext } from "../context/ProductContext";
 // import img from "../assets/img/sort.svg";
 // import img from "../assets/img/select.svg";
@@ -54,9 +54,9 @@ const Products = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <div className="select-img">
-                    {/* <img src={img} alt="" /> */}
-                  </div>
+                  <span>
+                  <i className="fa-solid fa-arrow-down-wide-short"></i>
+                  </span>
                   SORT BY
                 </button>
                 <ul
@@ -239,13 +239,13 @@ const Products = () => {
           <div className="col-12 col-md-9">
             <Row>
               {product.map((item) => (
+                <Col md={6} lg={4} sm={12} key={item.id}>
                 <SingleCard
-                  key={item.id}
                   id={item.id}
                   img={item.img}
                   title={item.title}
                   price={item.price}
-                />
+                /></Col>
               ))}
             </Row>
           </div>

@@ -2,10 +2,15 @@ import cart from '../assets/img/cart2.svg'
 import img from '../assets/img/Rectangle1.png'
 import about from "../assets/img/aboutimg.png";
 import contact from "../assets/img/contactimg.png";
+// import discount from "../assets/img/discount.png";
 import { Modal } from 'react-bootstrap';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SingleCard from '../components/SingleCard';
+import { ProductContext } from '../context/ProductContext';
+import PopularSlider from '../components/PopularSlider';
+import collections from '../data/collection';
+import Slider from 'react-slick';
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -14,6 +19,42 @@ const Home = () => {
   const handleShow = () => setShow(true);
 
   const navigate = useNavigate()
+
+  const [product]=useContext(ProductContext)
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
     <section className="home">
       <div className="container-fluid contain ">
@@ -66,13 +107,64 @@ const Home = () => {
       </div>
       </div>
       <div className="discount position-relative">
-        <div className="discount-text position-absolute">
+        <div className="discount-img">
+        </div>
+        <div className="discount-text d-flex flex-column align-items-center position-absolute">
           <h2 className='text-white'>20% DISCOUNT</h2>
           <span className='text-white'>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo </span>
           <button className="primary-button d-flex">
-            <img src={cart} alt="" />
+            <img src={cart} alt="" className='me-3'/>
             SHOP NOW
           </button>
+        </div>
+      </div>
+      <div className="products contain">
+        <div className="container-fluid">
+          <div className="d-flex justify-content-between align-items-center">
+            <h3>PRODUCTS</h3>
+            <Link to={"/products"}>SEE ALL</Link>
+          </div>
+          <div className="row">
+            {product.slice(0, 8).map((item) => (
+              <div className='col-12 col-sm-6 col-md-4 col-lg-3' key={item.id}>
+                <SingleCard
+                id={item.id}
+                img={item.img}
+                title={item.title}
+                price={item.price}
+              />
+              </div>
+          ))}
+          </div>
+        </div>
+      </div>
+      <div className="popular products contain">
+        <div className="container-fluid">
+          <h3>MOST POPULAR</h3>
+          <div className="row">
+           <PopularSlider/>
+          </div>
+        </div>
+      </div>
+      <div className="collections">
+        <div className="container-fluid contain">
+          <div className="d-flex justify-content-between align-items-center">
+          <h3>COLLECTIONS</h3>
+          <Link to={"/collections"}>SEE ALL</Link>
+          </div>
+          <div className="row">
+              <Slider {...settings}>
+              {collections.map((item) => (
+                <div className="col-12 col-md-6 col-lg-4 position-relative" key={item.id}>
+                  <div className="collections-img">
+                    <img src={item.img} alt="" />
+                    <div className="overlay"></div>
+                  </div>
+                  <div className="collections-title position-absolute">{item.title}</div>
+                </div>
+              ))}
+              </Slider>
+          </div>
         </div>
       </div>
       <div className="contact contain">
