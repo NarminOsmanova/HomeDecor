@@ -120,6 +120,10 @@ span {
 .primary-button:hover {
   background-color: #A5825D;
 }
+.primary-button span {
+  color: var(--color-white);
+  margin-bottom: 0 !important;
+}
 
 .outline-button {
   border-radius: 10px;
@@ -130,6 +134,10 @@ span {
 .outline-button:hover {
   border: 1px solid #A5825D;
   color: #A5825D;
+}
+.outline-button span {
+  color: var(--color-primary);
+  margin-bottom: 0 !important;
 }
 
 .section-fluid {

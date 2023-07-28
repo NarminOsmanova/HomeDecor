@@ -1,12 +1,22 @@
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Modal } from "react-bootstrap"
+import { Link, useNavigate } from "react-router-dom"
 
 const Checkout = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user")) || [];
+  const [firstName, lastName] = user.length > 0 ? user[0].split(" ") : ["", ""];
   return (
     <section className="checkout contain">
        <div className="section-fluid">
         <Link to={"/"}>Home</Link>
         <Link to={"/cart "}>Shopping cart </Link>
-        <Link to={"/checkout"}>Checkout</Link>
+        <Link to={"/cart/checkout"}>Checkout</Link>
       </div>
         <div className="container-fluid">
           <div className="row">
@@ -19,14 +29,14 @@ const Checkout = () => {
                     <input
                       type="text"
                       className="form-control input"
-                      defaultValue={"Jane"}
+                      defaultValue={firstName}
                     />
                     <input
                       type="email"
                       name=""
                       id=""
                       className="form-control input"
-                      defaultValue={"youremailhere@gmail.com"}
+                      defaultValue={localStorage.getItem("email")}
                     />
                     <input
                       type="text"
@@ -38,7 +48,7 @@ const Checkout = () => {
                     <input
                       type="text"
                       className="form-control input"
-                      defaultValue={"CURTIS"}
+                      defaultValue={lastName}
                     />
                     <input
                       type="tel"
@@ -118,9 +128,20 @@ const Checkout = () => {
                   PICKUP
                 </label>
               </div> 
-                <button type="button" className="primary-button">
+                <button type="button" onClick={handleShow}
+                 className="primary-button form-control">
                   FINISH ORDER
                 </button>
+                <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                  <p>YOUR ORDER IS COMPLETE!</p>
+                  <span className="text-center">
+                  You will be receiving a confirmation email with order details.
+                  </span>
+                  <button onClick={()=>{navigate("/")}} className="primary-button">HOME PAGE</button>
+                </Modal.Body>
+              </Modal>
               </form>
             </div>
           </div>

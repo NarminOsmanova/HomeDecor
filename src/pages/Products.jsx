@@ -1,21 +1,22 @@
 // import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-// import { ProductContext } from "../context/ProductContext";
+import { Row } from "react-bootstrap";
+import { ProductContext } from "../context/ProductContext";
 // import img from "../assets/img/sort.svg";
 // import img from "../assets/img/select.svg";
-// import products from "../data/products";
-// import SingleCard from "../components/SingleCard";
+import products from "../data/products";
+import SingleCard from "../components/SingleCard";
 
 const Products = () => {
-  // const [product, setProduct] = useContext(ProductContext);
-  // const filterData = (comingItem) => {
-  //   const result = products.filter((item) => {
-  //     return item.category === comingItem;
-  //   });
-  //   setProduct(result);
-  //   console.log(result);
-  // };
+  const [product, setProduct] = useContext(ProductContext);
+  const filterData = (comingItem) => {
+    const result = products.filter((item) => {
+      return item.category === comingItem;
+    });
+    setProduct(result);
+    console.log(result);
+  };
 
   const [categories, setCategories] = useState(true);
 
@@ -102,7 +103,7 @@ const Products = () => {
                     <label
                       htmlFor="SOFAS"
                       onClick={() => {
-                        // filterData("sofa");
+                        filterData("sofa");
                       }}
                     >
                       <input type="checkbox" name="" id="SOFAS" />
@@ -113,7 +114,7 @@ const Products = () => {
                     <label
                       htmlFor="BEDS"
                       onClick={() => {
-                        // filterData("bed");
+                        filterData("bed");
                       }}
                     >
                       <input type="checkbox" name="" id="BEDS" />
@@ -124,7 +125,7 @@ const Products = () => {
                     <label
                       htmlFor="RUGS"
                       onClick={() => {
-                        // filterData("rug");
+                        filterData("rug");
                       }}
                     >
                       <input type="checkbox" name="" id="RUGS" />
@@ -135,7 +136,7 @@ const Products = () => {
                     <label
                       htmlFor="CUSHIONS"
                       onClick={() => {
-                        // filterData("cushion");
+                        filterData("cushion");
                       }}
                     >
                       <input type="checkbox" name="" id="CUSHIONS" />
@@ -146,11 +147,22 @@ const Products = () => {
                     <label
                       htmlFor="SHELF"
                       onClick={() => {
-                        // filterData("shelf");
+                        filterData("shelf");
                       }}
                     >
                       <input type="checkbox" name="" id="SHELF" />
                       SHELF
+                    </label>
+                  </li>
+                  <li>
+                    <label
+                      htmlFor="TABLE"
+                      onClick={() => {
+                        filterData("table");
+                      }}
+                    >
+                      <input type="checkbox" name="" id="SHELF" />
+                      TABLE
                     </label>
                   </li>
                 </ul>
@@ -225,7 +237,7 @@ const Products = () => {
             </div>
           </div>
           <div className="col-12 col-md-9">
-            {/* <Row>
+            <Row>
               {product.map((item) => (
                 <SingleCard
                   key={item.id}
@@ -235,7 +247,7 @@ const Products = () => {
                   price={item.price}
                 />
               ))}
-            </Row> */}
+            </Row>
           </div>
         </div>
       </div>

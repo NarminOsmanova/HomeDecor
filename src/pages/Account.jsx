@@ -33,7 +33,7 @@ const Account = () => {
   {console.log(JSON.parse(localStorage.getItem("user")))}
 
   const user = JSON.parse(localStorage.getItem("user")) || [];
-const [firstName, lastName] = user.length > 0 ? user[0].split(" ") : ["", ""];
+  const [firstName, lastName] = user.length > 0 ? user[0].split(" ") : ["", ""];
   return (
     <section className="account contain">
       <div className="section-fluid">

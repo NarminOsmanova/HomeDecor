@@ -14,16 +14,22 @@ import Verify from './pages/Verify'
 import NewPassword from './pages/NewPassword'
 import Checkout from './pages/Checkout'
 import NotFound from './pages/NotFound'
+import { ProductProvider } from './context/ProductContext'
+import { CollectionProvider } from './context/CollectionContext'
+import ProductDetails from './pages/ProductDetails'
 
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
+      <ProductProvider>
+        <CollectionProvider>
+        <Routes>
         <Route path="/" element={<Master />}>
           <Route index element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/products' element={<Products/>}/>
+          <Route path='/products/:slug' element={<ProductDetails/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/collections' element={<Collections/>}/>
           <Route path='/account' element={<Account/>}/>
@@ -38,6 +44,8 @@ function App() {
           <Route path="newpassword" element={<NewPassword/>} />
       </Route>
       </Routes>
+        </CollectionProvider>
+      </ProductProvider>
     </BrowserRouter>
   )
 }
