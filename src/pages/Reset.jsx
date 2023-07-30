@@ -18,8 +18,6 @@ const Reset = () => {
         type="email"
         placeholder="E-MAIL ADDRESS"
         className="form-control input"
-        // value={resetEmail}
-        // onChange={(e) => setResetEmail(e.target.value)}
       />
       <button
         type="button"

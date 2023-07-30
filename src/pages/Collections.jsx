@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CollectionContext } from "../context/CollectionContext";
 
 const Collections = () => {
-  const [collections] = useContext(CollectionContext);
+  const {collection, handleItemClick, setSelectedTitle} = useContext(CollectionContext)
+  const navigate=useNavigate()
   return (
     <section className="collections contain">
       <div className="section-fluid">
@@ -18,13 +19,17 @@ const Collections = () => {
           minus id quod maxime.
         </span>
         <div className="row">
-          {collections.map((item) => (
+          {collection.map((item) => (
             <div className="col-12 col-md-6 col-lg-4 position-relative" key={item.id}>
               <div className="collections-img">
                 <img src={item.img} alt="" />
                 <div className="overlay"></div>
               </div>
-              <div className="collections-title position-absolute">{item.title}</div>
+                <div    onClick={() => {
+                  navigate("/products")
+                  setSelectedTitle(item.title);
+                  handleItemClick(item.title); // If you need to use the handleItemClick from the context
+                }} className="collections-title position-absolute">{item.title}</div>
             </div>
           ))}
         </div>

@@ -1,15 +1,13 @@
-// import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { ProductContext } from "../context/ProductContext";
-// import img from "../assets/img/sort.svg";
-// import img from "../assets/img/select.svg";
 import products from "../data/products";
 import SingleCard from "../components/SingleCard";
 
 const Products = () => {
-  const [product, setProduct] = useContext(ProductContext);
+  const [product,setProduct] = useContext(ProductContext);
+
   const filterData = (comingItem) => {
     const result = products.filter((item) => {
       return item.category === comingItem;
@@ -35,7 +33,7 @@ const Products = () => {
         <Link to={"/product"}>Products</Link>
       </div>
       <div className="container-fluid">
-        <div className="d-block d-md-flex">
+        <div className="shop-context d-block d-md-flex">
           <div>
             <h2>Products</h2>
             <span>
@@ -48,16 +46,19 @@ const Products = () => {
             <div className="shop-filter__select">
               <div className="dropdown">
                 <button
-                  className="select dropdown-toggle d-flex"
+                  className="dropdown-toggle d-flex"
                   type="button"
                   id="dropdownMenuButton"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <span>
-                  <i className="fa-solid fa-arrow-down-wide-short"></i>
+                  <span className="d-none d-md-block">
+                    <i className="fa-solid fa-arrow-down-wide-short"></i>
                   </span>
                   SORT BY
+                  <span className="d-block d-md-none">
+                    <i className="fa-solid fa-arrow-down-wide-short"></i>
+                  </span>
                 </button>
                 <ul
                   className="dropdown-menu"
@@ -84,9 +85,12 @@ const Products = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-12 col-md-3">
+          <div className="col-12 col-lg-3">
             <div className="shop-aside__item mt-5 mt-md-0">
-              <p onClick={showCategories} className="select">
+              <p
+                onClick={showCategories}
+                className="select d-flex justify-content-between"
+              >
                 CATEGORIES
                 <span className="d-block d-md-none">
                   <i className="fa-solid fa-angle-down"></i>
@@ -171,7 +175,10 @@ const Products = () => {
               )}
             </div>
             <div className="shop-aside__item">
-              <p onClick={showCollections} className="select">
+              <p
+                onClick={showCollections}
+                className="select d-flex justify-content-between"
+              >
                 COLLECTIONS
                 <span className="d-block d-md-none">
                   <i className="fa-solid fa-angle-down"></i>
@@ -236,16 +243,17 @@ const Products = () => {
               )}
             </div>
           </div>
-          <div className="col-12 col-md-9">
+          <div className="col-12 col-lg-9">
             <Row>
               {product.map((item) => (
-                <Col md={6} lg={4} sm={12} key={item.id}>
-                <SingleCard
-                  id={item.id}
-                  img={item.img}
-                  title={item.title}
-                  price={item.price}
-                /></Col>
+                <Col md={6} lg={4} sm={6} key={item.id}>
+                  <SingleCard
+                    id={item.id}
+                    img={item.img}
+                    title={item.title}
+                    price={item.price}
+                  />
+                </Col>
               ))}
             </Row>
           </div>

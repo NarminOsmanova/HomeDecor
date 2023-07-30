@@ -6,7 +6,9 @@ import wish2 from "../assets/img/heart2.svg";
 import out from "../assets/img/logout.svg";
 import eye1 from "../assets/img/eye.svg";
 import eye2 from "../assets/img/eye2.svg";
+import img from '../assets/img/bedroom.png'
 import { useState } from "react";
+
 const Account = () => {
   const [icon, setIcon] = useState(eye1);
   const [type, setType] = useState("password");
@@ -169,7 +171,20 @@ const Account = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-md-5"></div>
+            <div className="col-12 col-md-8 wishlist">
+            <div className="wishlist-item d-flex align-items-start">
+              <div className="wishlist-item_img">
+                <img src={img} className="img-fluid" alt="" />
+              </div>
+              <div className="d-flex flex-column justify-content-start">
+              <span>Grayson Premium Grey Wash Nest of Tables</span>
+              <p className="product-price">140$</p>
+              </div>
+              <span className="wishlist-heart">
+              <i className="fa-solid fa-heart"></i>
+              </span>
+            </div>
+            </div>
           </div>
         </div>
       )}

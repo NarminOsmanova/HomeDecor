@@ -40,7 +40,7 @@ const ProductDetails = () => {
             <div className="productdetails-img">
               <Slider {...settings}>
                 {productdetails.img.map((image, index) => (
-                  <div key={index}>
+                  <div key={index} className="product_img">
                     <ReactImageMagnify
                       smallImage={{
                         alt: productdetails.title,
@@ -62,7 +62,7 @@ const ProductDetails = () => {
           </div>
           <div className="col-12 col-md-6">
             <div className="productdetails-content">
-              <h5>{productdetails.title}</h5>
+              <p>{productdetails.title}</p>
               <span className="product-desc">{productdetails.description}</span>
               <span className="product-color">COLORS</span>
               <div className="product-color_select d-flex">
@@ -71,17 +71,24 @@ const ProductDetails = () => {
                 <div className="color-pink me-3"></div>
                 <div className="color-blue me-3"></div>
               </div>
-              <h3 className="product-price">{productdetails.price}</h3>
-
               <div className="d-flex">
-                <div className="quantity-box">
-                  <button className=" ps-2 minus">-</button>
-                  <span className="pe-4 ps-4 span-quantity">1</span>
-                  <button className="pe-2 plus">+</button>
+                <div className="product-quantity d-flex">
+                  <input
+                  type="button"
+                  defaultValue="-"
+                  className="minus"
+                  onClick={() =>{}}/>
+                  <input type="text" value={1} />
+                  <input
+                  type="button"
+                  defaultValue="+"
+                  className="plus"
+                  onClick={() =>{}} />
                 </div>
               </div>
-              <div className="d-flex">
-                <button className="primary-button d-flex">
+              <h3 className="product-price">{productdetails.price}$</h3>
+               <div className="d-flex">
+               <button className="primary-button d-flex">
                   <img src={cart1} alt="" />
                   BUY NOW
                 </button>
@@ -89,10 +96,13 @@ const ProductDetails = () => {
                   <img src={cart} alt="" />
                   ADD TO CART
                 </button>
-              </div>
+               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="container-fluid similar">
+        <h3>SIMILAR PRODUCTS</h3>
       </div>
     </section>
   );

@@ -148,7 +148,7 @@ const products = [
       ],
       "category": "table",
       "collection": [
-        "KITHCEN",
+        "KITCHEN",
         "OFFICE",
         "FAMILY ROOM"
       ],
@@ -188,7 +188,7 @@ const products = [
       ],
       "category": "rug",
       "collection": [
-        "KITHCEN",
+        "KITCHEN",
         "BEDROOM",
         "LAUNDRY ROOM"
       ],
@@ -210,7 +210,7 @@ const products = [
       "collection": [
         "GUEST ROOM",
         "BEDROOM",
-        "LAUNDRY ROOM"
+        "FAMILY ROOM"
       ],
       "title": "VECELO Twin Size Metal Bed Frame",
       "description": "Powder-coated platform bed frame features waterproof and scratch resistance, beautiful lines of metal art headboard&footboard take a warmth feeling, easy to fit any of your room like a bedroom, guestroom, or kid's room;",
@@ -241,8 +241,8 @@ const products = [
     {
       "id": "13",
       "img": [
-         "https://m.media-amazon.com/images/I/712XUdku3NL._AC_SX522_.jpg",
         "https://m.media-amazon.com/images/I/81WaHjIPy1L._AC_SX522_.jpg",
+        "https://m.media-amazon.com/images/I/712XUdku3NL._AC_SX522_.jpg",
         "https://m.media-amazon.com/images/I/71Qp164YMnL._AC_SX522_.jpg",
         "https://m.media-amazon.com/images/I/81i5bcvob5L._AC_SX522_.jpg"
       ],
@@ -250,7 +250,7 @@ const products = [
       "collection": [
         "LAUNDRY ROOM",
         "BATHROOM",
-        "KITHCEN"
+        "KITCHEN"
       ],
       "title": "Aesthetic Towel Racks for Bathroom Bath ",
       "description": "Hommtina towel rack helps you to create a clean and orderly bathroom space. When storage space is limited, this hanging towel rack can save space to the maximum extent, which is convenient for you to manage and use towels in different categories",
@@ -263,14 +263,14 @@ const products = [
       "img": [
         "https://m.media-amazon.com/images/I/81xxaviuRzL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/716VuujUiCL._AC_SX425_.jpg",
-        "https://m.media-amazon.com/images/I/61oNoIwLMNL._AC_SX425_.jpg",
+        "https://m.media-amazon.com/images/I/71H3XryFayL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/61Co-b0ZD7L._AC_SX425_.jpg"
       ],
       "category": "shelf",
       "collection": [
         "LAUNDRY ROOM",
         "BATHROOM",
-        "KITHCEN",
+        "KITCHEN",
         "LIBRARY"
       ],
       "title": "White Storage Corner Cabinet with 3 Drawers and Door",
@@ -291,7 +291,7 @@ const products = [
       "collection": [
         "LAUNDRY ROOM",
         "BATHROOM",
-        "KITHCEN",
+        "KITCHEN",
         "LIBRARY"
       ],
       "title": "Grey Storage Bathroom Floor Cabinet with Adjustable Shelves and Doors",

@@ -30,7 +30,7 @@ const Header = () => {
         HomeDecor
         </div>
         <div className="d-flex mobile-none">
-            <div className="nav-cart">
+            <div className="nav-cart" onClick={()=>{navigate("/cart")}}>
                 <img src={cart} alt="" />
             </div>
             <div className="nav-user" onClick={handleProceed}>
