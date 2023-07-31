@@ -1,19 +1,30 @@
 /* eslint-disable react/prop-types */
 import { Button, Card, Modal } from "react-bootstrap";
 import img1 from "../assets/img/heart.svg";
-import { useState } from "react";
-import { useCart } from "react-use-cart";
+import { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import slugify from "slugify";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cartSlice";
 
-const SingleCard = ({ status, img, title, price, description, alldata }) => {
+
+const SingleCard = ({ status,id, img, title, price, description }) => {
   const [counter, setCounter] = useState(1);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { addItem } = useCart();
+  useEffect(() => {
+    setCounter(counter);
+  }, [counter]);
+
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({...product,quantity: counter} ));
+  };
+
   return (
       <Card className="border-0 me-4">
        <div className="position-relative">
@@ -24,7 +35,7 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
           <div
             className="shop"
             onClick={() => {
-              addItem(alldata);
+             handleAddToCart({img,title,price,id,counter})
             }}
           >
             <i className="fa-solid fa-cart-plus"></i>
@@ -54,31 +65,7 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
                       </p>
                       <p className="product-price">$ {price}</p>
                       <p>{description}</p>
-                      <div className="contact-info__social">
-                        <span>find</span>
-                        <ul>
-                          <li>
-                            <a href="https://az-az.facebook.com/">
-                              <i className="fa-brands fa-facebook-f"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://twitter.com/">
-                              <i className="fa-brands fa-twitter"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.instagram.com/">
-                              <i className="fa-brands fa-instagram"></i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.linkedin.com/">
-                              <i className="fa-brands fa-linkedin-in"></i>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                     
                       <div className="product-quantity">
                         <input
                           type="button"
@@ -105,7 +92,7 @@ const SingleCard = ({ status, img, title, price, description, alldata }) => {
                           <button
                             className="btn btn-cart"
                             onClick={() => {
-                              addItem(alldata);
+                              
                             }}
                           >
                             <i className="fa-solid fa-cart-plus me-3"></i> cart
