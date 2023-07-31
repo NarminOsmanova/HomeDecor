@@ -48,7 +48,6 @@ const Login = () => {
           }
         }
       };
-    
   return (
     <>
       <div className="login_home">

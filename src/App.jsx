@@ -18,6 +18,9 @@ import { ProductProvider } from "./context/ProductContext";
 import { CollectionProvider } from "./context/CollectionContext";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import CollectionsCard from "./components/CollectionsCard";
+
+
 
 function App() {
   return (
@@ -32,7 +35,7 @@ function App() {
               <Route path="/products/:slug" element={<ProductDetails />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/collections" element={<Collections />} />
-              {/* <Route path="/filterProducts" element={<Collections />} /> */}
+              <Route path="/collections/:slug" element={<CollectionsCard/>} />
               <Route path="/account" element={<Account />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/cart/checkout" element={<Checkout />} />

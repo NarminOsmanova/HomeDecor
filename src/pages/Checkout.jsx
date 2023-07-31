@@ -30,11 +30,13 @@ const Checkout = () => {
                       type="text"
                       className="form-control input"
                       defaultValue={firstName}
+                      placeholder="Name"
                     />
                     <input
                       type="email"
                       name=""
                       id=""
+                      placeholder="Email"
                       className="form-control input"
                       defaultValue={localStorage.getItem("email")}
                     />
@@ -49,6 +51,7 @@ const Checkout = () => {
                       type="text"
                       className="form-control input"
                       defaultValue={lastName}
+                      placeholder="Surname"
                     />
                     <input
                       type="tel"

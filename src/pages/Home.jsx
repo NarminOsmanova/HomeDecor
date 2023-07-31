@@ -2,15 +2,13 @@ import cart from '../assets/img/cart2.svg'
 import img from '../assets/img/Rectangle1.png'
 import about from "../assets/img/aboutimg.png";
 import contact from "../assets/img/contactimg.png";
-// import discount from "../assets/img/discount.png";
 import { Modal } from 'react-bootstrap';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SingleCard from '../components/SingleCard';
 import { ProductContext } from '../context/ProductContext';
 import PopularSlider from '../components/PopularSlider';
-import collections from '../data/collection';
-import Slider from 'react-slick';
+import CollectionSlider from '../components/CollectionSlider';
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -21,41 +19,7 @@ const Home = () => {
   const navigate = useNavigate()
 
   const [product]=useContext(ProductContext)
-  var settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-  
+
   return (
     <section className="home">
       <div className="container-fluid contain ">
@@ -123,7 +87,7 @@ const Home = () => {
         <div className="container-fluid">
           <div className="d-flex justify-content-between align-items-center">
             <h3>PRODUCTS</h3>
-            <Link to={"/products"}>SEE ALL</Link>
+            <Link to={"/products"} className='d-none d-sm-block'>SEE ALL</Link>
           </div>
           <div className="row">
             {product.slice(0, 8).map((item) => (
@@ -136,6 +100,7 @@ const Home = () => {
               />
               </div>
           ))}
+            <Link to={"/products"} className='d-block d-sm-none'>SEE ALL</Link>
           </div>
         </div>
       </div>
@@ -151,20 +116,11 @@ const Home = () => {
         <div className="container-fluid contain">
           <div className="d-flex justify-content-between align-items-center">
           <h3>COLLECTIONS</h3>
-          <Link to={"/collections"}>SEE ALL</Link>
+          <Link to={"/collections"} className='d-none d-sm-block'>SEE ALL</Link>
           </div>
           <div className="row">
-              <Slider {...settings}>
-              {collections.map((item) => (
-                <div className="col-12 col-md-6 col-lg-4 position-relative" key={item.id}>
-                  <div className="collections-img">
-                    <img src={item.img} alt="" />
-                    <div className="overlay"></div>
-                  </div>
-                  <div className="collections-title position-absolute">{item.title}</div>
-                </div>
-              ))}
-              </Slider>
+             <CollectionSlider/>
+             <Link to={"/collections"} className='d-block d-sm-none'>SEE ALL</Link>
           </div>
         </div>
       </div>

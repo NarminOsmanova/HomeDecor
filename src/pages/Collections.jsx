@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CollectionContext } from "../context/CollectionContext";
+import slugify from "slugify";
 
 const Collections = () => {
   const {collection, handleItemClick, setSelectedTitle} = useContext(CollectionContext)
@@ -26,9 +27,9 @@ const Collections = () => {
                 <div className="overlay"></div>
               </div>
                 <div    onClick={() => {
-                  navigate("/products")
+                  navigate(`/collections/${slugify(item.title)}`)
                   setSelectedTitle(item.title);
-                  handleItemClick(item.title); // If you need to use the handleItemClick from the context
+                  handleItemClick(item.title); 
                 }} className="collections-title position-absolute">{item.title}</div>
             </div>
           ))}
