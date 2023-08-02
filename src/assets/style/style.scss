@@ -349,6 +349,9 @@
         button{
             margin-bottom: 4.5rem;
         }
+        .modal-content{
+            background-color: var(--color-light) !important;
+        }
     }
 }
 .notfound{
@@ -572,11 +575,17 @@
         h2{
             margin-bottom: 5rem;
         }
+        .d-flex{
+            .cart-img{
+                width: 12rem;
+            }
+        }
         .col-lg-9{
             .cart-item{
                 border-radius: 10px;
                 padding: 1rem 0;
                 border: 1px solid var(--color-dustyrose);
+                margin-bottom: 2rem;
                 .cart-item_icon{
                     margin: 0 3.5rem 0 3.5rem;
                 }
@@ -642,7 +651,7 @@
                     }
                 }
                 button{
-                    padding: 1.7rem 8.4rem;
+                    padding: 1.7rem 5.4rem;
                 }
             }
         }
@@ -651,8 +660,9 @@
 .wishlist{
     .wishlist-item{ 
         margin-left: 13.7rem;
+        margin-bottom: 2rem;
         .wishlist-item_img{
-            min-width: 21.4rem;
+            max-width: 21.4rem;
         }
         .d-flex{
             margin: 0 23.5rem 0 2rem;
@@ -747,8 +757,11 @@
             padding: 1.7rem 6.4rem;
         }
         .outline-button{
-            padding: 1.7rem 6.4rem !important;
+            padding: 1.7rem 5.0rem !important;
             margin-left: 2rem;
+        }
+        .modal-title{
+            line-height: 3.2rem;
         }
     }
 }

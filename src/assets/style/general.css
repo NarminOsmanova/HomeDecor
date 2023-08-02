@@ -31,6 +31,10 @@ body {
   overflow-x: hidden;
 }
 
+.modal-content {
+  background-color: var(--color-light);
+}
+
 ul, ol {
   list-style: none;
 }

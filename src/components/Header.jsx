@@ -7,7 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 const Header = () => {
     const navigate=useNavigate()
     const handleProceed = () => {
-      const isLoggedIn = localStorage.getItem('user');
+      const isLoggedIn = localStorage.getItem('email');
       window.scrollTo(0, 0)
       if (isLoggedIn) {
         navigate('/account');

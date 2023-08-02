@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom"
-// import img from '../assets/img/bedroom.png'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAll, removeFromCart, updateQuantity } from "../features/cartSlice";
-import { useEffect } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+
+
 const Cart = () => {
   const navigate =useNavigate();
 
@@ -28,18 +29,7 @@ const Cart = () => {
   const totalItems = cartProducts.reduce((total, product) => total + product.quantity, 0);
   const totalPrice = cartProducts.reduce((total, product) => total + product.quantity * product.price, 0);
 
-  useEffect(() => {
-    const storedCartProducts = localStorage.getItem("cartProducts");
-    if (storedCartProducts) {
-      dispatch({ type: "cart/loadCartProducts", payload: JSON.parse(storedCartProducts) });
-    }
-  }, [dispatch]);
 
-  useEffect(() => {
-    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
-  }, [cartProducts]);
-  
-    
   
   return (
     <section className="cart contain">
@@ -49,7 +39,7 @@ const Cart = () => {
       </div>
       <div className="container-fluid">
         <h2>SHOPPING CART</h2>
-        <div className="row">
+        {totalItems ? <div className="row">
           <div className="col-12 col-lg-9">
            {cartProducts.map((product)=>(
             (product.quantity>0) ? 
@@ -59,7 +49,13 @@ const Cart = () => {
               <i className="fa-solid fa-xmark"></i>
               </span>
               <div className="cart-item_img">
-                <img src={product.img[0]} className="img-fluid" alt="" />
+                {/* <img src={product.img[0]} className="img-fluid" alt="" /> */}
+
+                {product.img && product.img.length > 0 ? ( // Check if img exists and has at least one element
+                      <img src={product.img[0]} className="img-fluid" alt="" />
+                    ) : (
+                      <img src="default-placeholder-image.png" className="img-fluid" alt="" /> // Replace with a default image or use a placeholder image
+                    )}
               </div>
               <span>{product.title}</span>
               <div className="d-flex align-items-center">
@@ -82,7 +78,7 @@ const Cart = () => {
             </div>   
              : null
            ))}
-           <button onClick={handleDeleteAll}>Delete All</button>
+           <button onClick={handleDeleteAll} className="primary-button">Delete All</button>
           </div>
           <div className="col-12 col-lg-3">
             <div className="cart-box">
@@ -98,7 +94,28 @@ const Cart = () => {
               <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout")}}>CHECKOUT</button>
             </div>
           </div>
-        </div>
+        </div> : ((<div className="cart-container">
+        <div className="container">
+          <div className="d-flex flex-column justify-content-center align-items-center text-center">
+            <div className="cart-img">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/372/372705.png"
+                alt=""
+              />
+            </div>
+            <p className="fw-semibold mt-4" style={{ fontSize: "14px" }}>
+            YOUR CART IS CURRENTLY EMPTY.
+            </p>
+            <LinkContainer to="/products" onClick={() => { window.scrollTo(0, 0) }}>
+              <button
+                className="fw-semibold outline-button"
+                size="sm"
+              >
+                RETURN TO SHOP
+              </button>
+            </LinkContainer>
+          </div>
+        </div></div>))}
       </div>
     </section>
   )

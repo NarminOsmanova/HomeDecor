@@ -6,8 +6,10 @@ import wish2 from "../assets/img/heart2.svg";
 import out from "../assets/img/logout.svg";
 import eye1 from "../assets/img/eye.svg";
 import eye2 from "../assets/img/eye2.svg";
-import img from '../assets/img/bedroom.png'
+// import img from '../assets/img/bedroom.png'
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromWish } from "../features/wishSlice";
 
 const Account = () => {
   const [icon, setIcon] = useState(eye1);
@@ -36,6 +38,12 @@ const Account = () => {
 
   const user = JSON.parse(localStorage.getItem("user")) || [];
   const [firstName, lastName] = user.length > 0 ? user[0].split(" ") : ["", ""];
+
+  const { wishlistsItems } = useSelector((state) => state?.wish);
+  const dispatch = useDispatch();
+  const handleRemoveFromWish = (productId) => {
+    dispatch(removeFromWish(productId));
+  };
   return (
     <section className="account contain">
       <div className="section-fluid">
@@ -172,18 +180,20 @@ const Account = () => {
               </div>
             </div>
             <div className="col-12 col-md-8 wishlist">
-            <div className="wishlist-item d-flex align-items-start">
-              <div className="wishlist-item_img">
-                <img src={img} className="img-fluid" alt="" />
-              </div>
-              <div className="d-flex flex-column justify-content-start">
-              <span>Grayson Premium Grey Wash Nest of Tables</span>
-              <p className="product-price">140$</p>
-              </div>
-              <span className="wishlist-heart">
-              <i className="fa-solid fa-heart"></i>
-              </span>
-            </div>
+           {wishlistsItems?.map((wishitem)=>(
+             <div className="wishlist-item d-flex align-items-start" key={wishitem.id}>
+             <div className="wishlist-item_img">
+               <img src={wishitem.img[0]} className="img-fluid" />
+             </div>
+             <div className="d-flex flex-column justify-content-start">
+             <span>{wishitem.title}</span>
+             <p className="product-price">{wishitem.price}$</p>
+             </div>
+             <span className="wishlist-heart" onClick={()=>{handleRemoveFromWish(wishitem.id)}}>
+             <i className="fa-solid fa-heart"></i>
+             </span>
+           </div>
+           ))}
             </div>
           </div>
         </div>

@@ -2,9 +2,9 @@ const products = [
     {
       "id": "1",
       "img": [
+        "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-d72aws_400x.webp?v=1644690862",
          "https://scontent.fgyd21-1.fna.fbcdn.net/v/t1.6435-9/69184411_2466060476807715_4513914369288962048_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=973b4a&_nc_ohc=8dsaunDrnpsAX99sN6_&_nc_ht=scontent.fgyd21-1.fna&oh=00_AfDEpCYHlb45dlxud9TojvM9IME8k36JD4-nDnVUhZqshA&oe=64D9D8B7",
          "https://ehome.az/media/products/thumbnails/kreslo-kreslolar-divanlar-kayli-1-ehome.az_31B6djL.jpg",
-         "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-d72aws_400x.webp?v=1644690862",
          "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-zx3l2s_400x.webp?v=1644690863"
       ],
       "category": "sofa",
@@ -13,7 +13,7 @@ const products = [
         "FAMILY ROOM",
         "LIBRARY"
       ],
-      "title": "Kayli sofa",
+      "title": "Yellow Kayli sofa",
       "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.  ",
       "price": "140.00",
       "status": true,
@@ -85,7 +85,7 @@ const products = [
         "https://m.media-amazon.com/images/I/61T79qFbrBL.__AC_SX300_SY300_QL70_ML2_.jpg",
         "https://m.media-amazon.com/images/I/41PCuD2oiFL._AC_SX466_.jpg",
         "https://m.media-amazon.com/images/I/51ZlJ1FOtYL._AC_SX466_.jpg",
-        "https://m.media-amazon.com/images/I/617rF0ydrdL._AC_SX466_.jpg"
+        "https://m.media-amazon.com/images/I/617rF0ydrdL._AC_SX466_.jpg",
       ],
       "category": "sofa",
       "collection": [
@@ -101,10 +101,10 @@ const products = [
     {
       "id": "6",
       "img": [
-        "https://www.cielo.co.za/img/cms/Blog%20images/Home%20Office%20Gadgets%20and%20Furniture/Phoenix%20desk.jpg",
-        "https://www.cielo.co.za/modules/prestablog/views/img/grid-for-1-7/up-img/85.jpg",
-        "https://www.cielo.co.za/img/cms/Blog%20images/Home%20Office%20Gadgets%20and%20Furniture/phoenix%20office%20desk.jpg",
-        "https://www.cielo.co.za/img/cms/Blog%20images/Home%20Office%20Gadgets%20and%20Furniture/plants.jpg"
+        "https://www.chiwawa.my/image/chiwawa/image/cache/data/all_product_images/product-5293/JRcNeXXS1652183534-757x757.png",
+        "https://filebroker-cdn.lazada.sg/kf/S50fb2971d6ec420c9fb0baabd3536e5fA.jpg",
+        "https://cf.shopee.com.my/file/413757e3f80104b2eb95045e5b699a1b",
+        "https://www.chiwawa.my/image/chiwawa/image/cache/data/all_product_images/product-5293/D9RiVrc21652337167-800x794.png",
       ],
       "category": "table",
       "collection": [
@@ -121,8 +121,8 @@ const products = [
     {
       "id": "7",
       "img": [
-        "https://i5.walmartimages.com/asr/5c7d148f-8dff-46ec-b53c-d69b2ce61e19.3b82c7efbe973a56d662af90ef2849f5.jpeg",
         "https://m.media-amazon.com/images/I/71mlK228UDL._AC_UF894,1000_QL80_.jpg",
+        "https://i5.walmartimages.com/asr/5c7d148f-8dff-46ec-b53c-d69b2ce61e19.3b82c7efbe973a56d662af90ef2849f5.jpeg",
         "https://m.media-amazon.com/images/I/71NCaoSTDdL.jpg",
         "https://m.media-amazon.com/images/I/71bGzmgacrS._AC_UF1000,1000_QL80_.jpg"
       ],
@@ -141,10 +141,10 @@ const products = [
     {
       "id": "8",
       "img": [
+        "https://d31xx0fh1q6nlw.cloudfront.net/wp-content/uploads/DSW-Chair.jpeg",
+        "http://t3.gstatic.com/images?q=tbn:ANd9GcTsioDE8ksXQrq-gq6VtpZNDZ7Rf9Gp0pJtE4KoXtD0DYsaKWI6",
+        "https://cdn.domdivanov86.com/files/imgs/ig1111916/kuhonnyi-stul-dsl-110-wood-belyi-7-590x430.jpg",
         "http://t0.gstatic.com/images?q=tbn:ANd9GcTLazoE0DBYy8Xxmzw2H9LgskZK1_mpSRYgFwKhkKQNxrrmwtMw",
-        "http://t3.gstatic.com/images?q=tbn:ANd9GcRYDOkYuBNvTZJd5YtU8IQG735Pwgz_BtpJTHq0mQ3KoR1vZag6",
-        "https://img.ltwebstatic.com/images3_pi/2022/06/09/165475136893e4b1ec0cefc2f94bc6884466aeba6d_thumbnail_600x.jpg",
-        "https://cdn.domdivanov86.com/files/imgs/ig1111916/kuhonnyi-stul-dsl-110-wood-belyi-7-590x430.jpg"
       ],
       "category": "table",
       "collection": [
@@ -152,7 +152,7 @@ const products = [
         "OFFICE",
         "FAMILY ROOM"
       ],
-      "title": "Finch Fox Eames Replica Nordan Iconic Chair in White Colour",
+      "title": "Finch Fox Eames Replica Nordan Iconic Chair",
       "description": "The loveseat tub sofa chair with golden metal legs combines sumptuous padding and generous proportions with a lighter-than-air look. The stitching pipe design takes inspiration from modern apartment living ",
       "price": "120.00",
       "status": true,
