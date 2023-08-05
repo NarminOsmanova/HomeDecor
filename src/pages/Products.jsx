@@ -4,6 +4,8 @@ import { Col, Row } from "react-bootstrap";
 import { ProductContext } from "../context/ProductContext";
 import products from "../data/products";
 import SingleCard from "../components/SingleCard";
+import { LanguageContext } from "../context/LanguageContext";
+import translations from "../data/langdata";
 
 const Products = () => {
   const [product,setProduct] = useContext(ProductContext);
@@ -26,16 +28,19 @@ const Products = () => {
   const showCollections = () => {
     setCollections(!collections);
   };
+
+  const { language } = useContext(LanguageContext);
+  const t = translations[language];
   return (
     <section className="products contain">
       <div className="section-fluid">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/product"}>Products</Link>
+        <Link to={"/"}>{t.home}</Link>
+        <Link to={"/product"}>{t.products}</Link>
       </div>
       <div className="container-fluid">
         <div className="shop-context d-block d-md-flex">
           <div>
-            <h2>Products</h2>
+            <h2>{t.products}</h2>
             <span>
               Et harum quidem rerum facilis est et expedita distinctio. Nam
               libero tempore, cum soluta nobis est eligendi optio cumque nihil
@@ -55,7 +60,7 @@ const Products = () => {
                   <span className="d-none d-md-block">
                     <i className="fa-solid fa-arrow-down-wide-short"></i>
                   </span>
-                  SORT BY
+                  {t.sort}
                   <span className="d-block d-md-none">
                     <i className="fa-solid fa-arrow-down-wide-short"></i>
                   </span>
@@ -66,17 +71,17 @@ const Products = () => {
                 >
                   <li>
                     <a className="dropdown-item" href="#">
-                      POPULAR FIRST
+                     {t.popularf}
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      CHEAPEST FIRST
+                     {t.cheap}
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      EXPENSIVE FIRST
+                      {t.expensive}
                     </a>
                   </li>
                 </ul>
@@ -91,7 +96,7 @@ const Products = () => {
                 onClick={showCategories}
                 className="select d-flex justify-content-between"
               >
-                CATEGORIES
+                {t.categories}
                 <span className="d-block d-md-none">
                   <i className="fa-solid fa-angle-down"></i>
                 </span>
@@ -100,7 +105,7 @@ const Products = () => {
                 <ul>
                   <li>
                     <label htmlFor="ALL">
-                      <input type="checkbox" name="" id="ALL" /> ALL
+                      <input type="checkbox" name="" id="ALL" /> {t.all}
                     </label>
                   </li>
                   <li>
@@ -111,7 +116,7 @@ const Products = () => {
                       }}
                     >
                       <input type="checkbox" name="" id="SOFAS" />
-                      SOFAS
+                      {t.sofas}
                     </label>
                   </li>
                   <li>
@@ -122,7 +127,7 @@ const Products = () => {
                       }}
                     >
                       <input type="checkbox" name="" id="BEDS" />
-                      BEDS
+                      {t.beds}
                     </label>
                   </li>
                   <li>
@@ -133,7 +138,7 @@ const Products = () => {
                       }}
                     >
                       <input type="checkbox" name="" id="RUGS" />
-                      RUGS
+                      {t.rugs}
                     </label>
                   </li>
                   <li>
@@ -144,7 +149,7 @@ const Products = () => {
                       }}
                     >
                       <input type="checkbox" name="" id="CUSHIONS" />
-                      CUSHIONS
+                      {t.cushions}
                     </label>
                   </li>
                   <li>
@@ -155,18 +160,18 @@ const Products = () => {
                       }}
                     >
                       <input type="checkbox" name="" id="SHELF" />
-                      SHELF
+                      {t.shelves}
                     </label>
                   </li>
                   <li>
                     <label
-                      htmlFor="TABLE"
+                      htmlFor="CHAIRS"
                       onClick={() => {
-                        filterData("table");
+                        filterData("chair");
                       }}
                     >
-                      <input type="checkbox" name="" id="SHELF" />
-                      TABLE
+                      <input type="checkbox" name="" id="CHAIRS" />
+                      {t.chairs}
                     </label>
                   </li>
                 </ul>
@@ -179,7 +184,7 @@ const Products = () => {
                 onClick={showCollections}
                 className="select d-flex justify-content-between"
               >
-                COLLECTIONS
+                {t.collections}
                 <span className="d-block d-md-none">
                   <i className="fa-solid fa-angle-down"></i>
                 </span>
@@ -188,53 +193,52 @@ const Products = () => {
                 <ul>
                   <li>
                     <label htmlFor="all">
-                      <input type="checkbox" name="" id="all" /> ALL
+                      <input type="checkbox" name="" id="all" /> {t.all}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="BEDROOM">
-                      <input type="checkbox" name="" id="BEDROOM" /> BEDROOM
+                      <input type="checkbox" name="" id="BEDROOM" /> {t.bedroom}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIVING">
-                      <input type="checkbox" name="" id="LIVING" /> LIVING ROOM
+                      <input type="checkbox" name="" id="LIVING" /> {t.living}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="KITCHEN">
-                      <input type="checkbox" name="" id="KITCHEN" /> KITCHEN
+                      <input type="checkbox" name="" id="KITCHEN" /> {t.kitchen}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIBRARY">
-                      <input type="checkbox" name="" id="LIBRARY" /> LIBRARY
+                      <input type="checkbox" name="" id="LIBRARY" /> {t.library}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="OFFICE">
-                      <input type="checkbox" name="" id="OFFICE" /> OFFICE
+                      <input type="checkbox" name="" id="OFFICE" /> {t.office}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LAUNDRY">
-                      <input type="checkbox" name="" id="LAUNDRY" /> LAUNDRY
-                      ROOM
+                      <input type="checkbox" name="" id="LAUNDRY" /> {t.laundry}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="GUEST">
-                      <input type="checkbox" name="" id="GUEST" /> GUEST ROOM
+                      <input type="checkbox" name="" id="GUEST" /> {t.guest}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="FAMILY">
-                      <input type="checkbox" name="" id="FAMILY" /> FAMILY ROOM
+                      <input type="checkbox" name="" id="FAMILY" /> {t.family}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="BATHROOM">
-                      <input type="checkbox" name="" id="BATHROOM" /> BATHROOM
+                      <input type="checkbox" name="" id="BATHROOM" /> {t.bath}
                     </label>
                   </li>
                 </ul>

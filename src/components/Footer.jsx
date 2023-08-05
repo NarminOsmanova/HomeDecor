@@ -1,5 +1,11 @@
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import translations from "../data/langdata";
 
 const Footer = () => {
+  
+  const { language } = useContext(LanguageContext);
+  const t = translations[language];
   return (
     <footer className="footer contain">
       <div className="container-fluid">
@@ -19,7 +25,7 @@ const Footer = () => {
         </div>
         <div className="row">
           <div className="col-12 footer-bottom">
-            <span>©2022 All Right Reserved. Developed by Webcoder Agency</span>
+            <span>{t.reserved}</span>
           </div>
         </div>
       </div>

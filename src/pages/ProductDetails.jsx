@@ -8,7 +8,7 @@ import cart from "../assets/img/cartprimary.svg";
 import cart1 from "../assets/img/cartwhite.svg";
 import SimilarProductsSlider from "../components/SimilarProductsSlider";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cartSlice";
+import { addToCart, removeFromCart, updateQuantity } from "../features/cartSlice";
 
 const ProductDetails = () => {
   const [product] = useContext(ProductContext);
@@ -40,6 +40,15 @@ const ProductDetails = () => {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({...product,quantity: counter} ));
+  };
+  const handleQuantityChange = (productId, quantity) => {
+    if (quantity <= 0) {
+      // If the quantity becomes zero or less, remove the product from the cart
+      dispatch(removeFromCart(productId));
+    } else {
+      setCounter((prevCounter) => prevCounter + quantity);
+      dispatch(updateQuantity({ id: productId, quantity }));
+    }
   };
   return (
     <section className="productdetails contain">
@@ -91,14 +100,14 @@ const ProductDetails = () => {
                     type="button"
                     defaultValue="-"
                     className="minus"
-                    onClick={() => {}}
+                    onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
                   />
-                  <input type="text" value={1} />
+                  <input type="text" value={counter} />
                   <input
                     type="button"
                     defaultValue="+"
                     className="plus"
-                    onClick={() => {}}
+                    onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
                   />
                 </div>
               </div>

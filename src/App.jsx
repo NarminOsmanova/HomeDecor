@@ -19,12 +19,14 @@ import { CollectionProvider } from "./context/CollectionContext";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import CollectionsCard from "./components/CollectionsCard";
+import { LanguageProvider } from "./context/LanguageContext";
 
 
 
 function App() {
   return (
     <BrowserRouter>
+      <LanguageProvider>
       <ProductProvider>
         <CollectionProvider>
           <Routes>
@@ -51,6 +53,7 @@ function App() {
           </Routes>
         </CollectionProvider>
       </ProductProvider>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

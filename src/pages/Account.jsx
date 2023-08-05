@@ -180,7 +180,7 @@ const Account = () => {
               </div>
             </div>
             <div className="col-12 col-md-8 wishlist">
-           {wishlistsItems?.map((wishitem)=>(
+           { wishlistsItems?.map((wishitem)=>(
              <div className="wishlist-item d-flex align-items-start" key={wishitem.id}>
              <div className="wishlist-item_img">
                <img src={wishitem.img[0]} className="img-fluid" />

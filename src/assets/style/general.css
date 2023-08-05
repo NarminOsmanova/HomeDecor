@@ -60,6 +60,7 @@ h1 {
   line-height: 8.6rem !important;
   color: var(--color-black) !important;
   font-family: Didot !important;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -69,6 +70,7 @@ h2 {
   line-height: 5.2rem !important;
   color: var(--color-black) !important;
   font-family: Didot !important;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -78,6 +80,7 @@ h3 {
   font-size: 4.8rem;
   font-style: normal;
   line-height: 5.2rem;
+  text-transform: uppercase;
 }
 
 h4 {
@@ -120,6 +123,7 @@ span {
   padding: 1.7rem 9.9rem;
   color: var(--color-white);
   font-size: 1.6rem;
+  text-transform: uppercase;
 }
 .primary-button:hover {
   background-color: #A5825D;

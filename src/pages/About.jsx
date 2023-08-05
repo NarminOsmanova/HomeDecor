@@ -2,6 +2,9 @@
 import { Link } from "react-router-dom";
 import about from "../assets/img/aboutimg.png";
 import { animated, useSpring } from "react-spring";
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import translations from "../data/langdata";
 
 const About = () => {
   // reqemlerin avtomatik artmasi ucun
@@ -9,20 +12,22 @@ function Number({ n }) {
   const { number } = useSpring({
     from: { number: 0 },
     number: n,
-    delay: 3000,
+    delay: 2000,
     config: { mass: 1, tension: 20, friction: 10 },
   });
   return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>;
 }
+const { language } = useContext(LanguageContext);
+const t = translations[language];
   return (
     <section className="about contain">
       <div className="section-fluid">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/about "}>About </Link>
+        <Link to={"/"}>{t.home}</Link>
+        <Link to={"/about "}>{t.about} </Link>
       </div>
       <div className="container-fluid">
         <div className="row">
-          <h2>ABOUT US</h2>
+          <h2>{t.us}</h2>
           <div className="col-12 col-md-6">
             <div className="about-img">
               <img src={about} alt="" />
@@ -54,25 +59,25 @@ function Number({ n }) {
                 <h2 className="d-flex">
                   <Number n={500} />+
                 </h2>
-                <p>PROJECTS</p>
+                <p>{t.project}</p>
               </div>
               <div className="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-center align-items-center">
                 <h2 className="d-flex">
                   <Number n={70} />+
                 </h2>
-                <p>PARTNERS</p>
+                <p>{t.partner}</p>
               </div>
               <div className="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-center align-items-center">
                 <h2 className="d-flex">
                   <Number n={30} /> K+
                 </h2>
-                <p>FOLLOWERS</p>
+                <p>{t.follower}</p>
               </div>
               <div className="col-12 col-sm-6 col-lg-3 d-flex flex-column justify-content-center align-items-center">
                 <h2 className="d-flex">
                   <Number n={25} /> +
                 </h2>
-                <p>YEARS</p>
+                <p>{t.year}</p>
               </div>
             </div>
       </div>

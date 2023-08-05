@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header .nav-top {
   margin: 2.5rem 0 2.7rem 0;
 }
@@ -17,6 +18,9 @@
 }
 .header .nav-top .nav-cart {
   margin-right: 3rem;
+}
+.header .nav-top .nav-cart .badge {
+  top: 20%;
 }
 .header .nav-bottom a {
   margin-right: 7rem;
@@ -120,8 +124,47 @@
   color: var(--color-primary);
   text-decoration: underline !important;
 }
+.home .collections .slick-next, .home .collections .slick-prev {
+  bottom: -20%;
+}
 .home .contact {
   margin-top: 12.8rem;
+}
+.home .slick-prev, .home .slick-next {
+  position: absolute;
+  bottom: 0%;
+  transform: translateY(-50%);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  font-size: 0;
+  line-height: 0;
+  z-index: 44;
+}
+.home .slick-prev::before, .home .slick-next::before {
+  content: "";
+  display: block;
+}
+.home .slick-prev {
+  right: 3rem;
+}
+.home .slick-prev::after {
+  content: "←";
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.home .slick-next {
+  right: 0rem;
+  left: auto;
+}
+.home .slick-next::after {
+  content: "→";
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .about .container-fluid h2, .about .container-fluid h3 {
@@ -369,6 +412,7 @@
   margin-bottom: 2.6rem;
   color: var(--color-primary);
   cursor: pointer;
+  text-transform: uppercase;
 }
 .products .container-fluid .shop-aside__item label {
   margin-bottom: 2.5rem;
@@ -429,7 +473,13 @@
   top: 2rem;
   right: 2rem;
   background-color: var(--color-white);
-  padding: 6px;
+  padding: 6px 10px;
+}
+.products .container-fluid .card .heart .fa-solid {
+  color: var(--color-primary);
+}
+.products .container-fluid .card .heart .fa-regular {
+  color: var(--color-primary);
 }
 
 .productdetails .section-fluid a:nth-child(2) {
@@ -514,7 +564,10 @@
 .cart .container-fluid h2 {
   margin-bottom: 5rem;
 }
-.cart .container-fluid .d-flex .cart-img {
+.cart .container-fluid .noproduct {
+  margin-top: 10rem;
+}
+.cart .container-fluid .noproduct .cart-img {
   width: 12rem;
 }
 .cart .container-fluid .col-lg-9 .cart-item {
@@ -714,6 +767,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--color-white);
+  cursor: pointer;
 }
 
 .collectiondetails .section-fluid a:nth-child(2) {

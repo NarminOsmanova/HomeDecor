@@ -5,13 +5,15 @@ import { useCallback, useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import slugify from "slugify";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cartSlice";
-// import { addToWish } from "../features/wishSlice";
+import { addToCart, updateQuantity } from "../features/cartSlice";
 import cart from "../assets/img/cartprimary.svg";
 import cart1 from "../assets/img/cartwhite.svg";
 import { addToWish, removeFromWish } from "../features/wishSlice";
+import { useNavigate } from "react-router-dom";
 
 const SingleCard = ({ id, img, title, price }) => {
+
+  const navigate=useNavigate()
   const [counter, setCounter] = useState(1);
   const [show, setShow] = useState(false);
 
@@ -22,24 +24,26 @@ const SingleCard = ({ id, img, title, price }) => {
     setCounter(counter);
   }, [counter]);
 
+  const updateCounter = (newCounter) => {
+    setCounter(newCounter);
+  };
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ ...product, quantity: counter }));
   };
-  // const addToWishlistHandler = (product) => {
-  //   dispatch(addToWish(product));
-  // };
+
+  const handleQuantityChange = (productId, quantity) => {
+      dispatch(updateQuantity({ id: productId, quantity }));
+  };
+
   const local = localStorage.getItem("wishItems");
   const wishData = local ? JSON.parse(local).find((item) => item.id === id) : false;
 
   const [wishStatus, setWishStatus] = useState(wishData ? "solid" : "regular");
   const findWish = (id) => {
-    // const localWish: any = localStorage.getItem("wish");
     const local = localStorage.getItem("wishItems");
     const wishData = local ? JSON.parse(local).find((item) => item.id === id) : false;
-    // const wish = JSON.parse(localWish)?.find((item: any) => item.id === id);
-    // wishData ? setWishStatus("solid") : setWishStatus("regular");
     return wishData ? true : false;
   }
 
@@ -104,14 +108,18 @@ const SingleCard = ({ id, img, title, price }) => {
                               type="button"
                               defaultValue="-"
                               className="minus"
-                              onClick={() => {}}
+                              onClick={() =>{const newCounter = Math.max(1, counter - 1); // Make sure counter doesn't go below 1
+                              handleQuantityChange(id, newCounter);
+                              updateCounter(newCounter); }}
                             />
-                            <input type="text" value={1} />
+                            <input type="text" value={counter} readOnly />
                             <input
                               type="button"
                               defaultValue="+"
                               className="plus"
-                              onClick={() => {}}
+                              onClick={() =>{const newCounter = counter + 1;
+                                handleQuantityChange(id, newCounter);
+                                updateCounter(newCounter)}}
                             />
                           </div>
                         </div>
@@ -119,13 +127,17 @@ const SingleCard = ({ id, img, title, price }) => {
                           {price}$
                         </h3>
                           <button
-                            className="primary-button mb-3 d-flex"
+                            className="primary-button mb-3 d-flex" onClick={()=>{ 
+                              handleAddToCart({ img, title, price, id, counter });
+                              navigate("/cart")
+                              window.scrollTo(0,0)
+                            }}
                           >
                             <img src={cart1} alt="" />
                             BUY NOW
                           </button>
                           <button
-                            className="outline-button mb-3 ms-0 d-flex"
+                            className="outline-button mb-3 ms-0 d-flex" onClick={()=>{ handleAddToCart({ img, title, price, id, counter })}}
                           >
                             <img src={cart} alt="" />
                             ADD TO CART
@@ -154,10 +166,6 @@ const SingleCard = ({ id, img, title, price }) => {
       <div className="heart">
         <div
           className="card-heart"
-          // onClick={() => {
-          //   // addToWishlistHandler({ img, title, price, id });
-
-          // }}
           onClick={() => { wishClick() }}
         >
           <span><i className={`fa-${wishStatus} fa-heart`}></i></span>

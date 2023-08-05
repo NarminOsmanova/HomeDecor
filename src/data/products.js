@@ -106,7 +106,7 @@ const products = [
         "https://cf.shopee.com.my/file/413757e3f80104b2eb95045e5b699a1b",
         "https://www.chiwawa.my/image/chiwawa/image/cache/data/all_product_images/product-5293/D9RiVrc21652337167-800x794.png",
       ],
-      "category": "table",
+      "category": "chair",
       "collection": [
         "LIBRARY",
         "OFFICE",
@@ -126,7 +126,7 @@ const products = [
         "https://m.media-amazon.com/images/I/71NCaoSTDdL.jpg",
         "https://m.media-amazon.com/images/I/71bGzmgacrS._AC_UF1000,1000_QL80_.jpg"
       ],
-      "category": "table",
+      "category": "chair",
       "collection": [
         "LIVING ROOM",
         "OFFICE",
@@ -146,7 +146,7 @@ const products = [
         "https://cdn.domdivanov86.com/files/imgs/ig1111916/kuhonnyi-stul-dsl-110-wood-belyi-7-590x430.jpg",
         "http://t0.gstatic.com/images?q=tbn:ANd9GcTLazoE0DBYy8Xxmzw2H9LgskZK1_mpSRYgFwKhkKQNxrrmwtMw",
       ],
-      "category": "table",
+      "category": "chair",
       "collection": [
         "KITCHEN",
         "OFFICE",

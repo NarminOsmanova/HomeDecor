@@ -17,6 +17,9 @@
         }
         .nav-cart{
             margin-right: 3rem;
+            .badge{
+                top:20%;
+            }
         }
     }
     .nav-bottom{
@@ -131,9 +134,48 @@
             text-decoration: underline !important;
         }
         padding-bottom: 12rem;
+        .slick-next,.slick-prev{
+            bottom: -20%;
+        }
     }
     .contact{
         margin-top: 12.8rem;
+    }
+    .slick-prev,.slick-next{
+        position: absolute;
+        bottom: 0%;
+        transform: translateY(-50%);
+        color: var(--color-white);
+        background-color: var(--color-primary);
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        font-size: 0;
+        line-height: 0;
+        z-index: 44;
+        &::before{
+            content: "";
+            display: block;
+        } 
+    }
+    .slick-prev{
+            right: 3rem;
+            &::after{
+                content: "\2190";
+                display: block;
+                font-size: 1.4rem;
+                line-height: 1;
+            }
+    }
+    .slick-next{
+            right: 0rem;
+            left: auto; 
+            &::after{
+                content: "\2192";
+                display: block;
+                font-size: 1.4rem;
+                line-height: 1;
+            }
     }
 }
 .about{
@@ -416,6 +458,7 @@
                 margin-bottom: 2.6rem;
                 color: var(--color-primary);
                 cursor: pointer;
+                text-transform: uppercase;
             }
             label{
                 margin-bottom: 2.5rem;
@@ -478,7 +521,13 @@
                     top: 2rem;
                     right: 2rem;
                     background-color: var(--color-white);
-                    padding: 6px;
+                    padding:6px 10px;
+                    .fa-solid{
+                        color: var(--color-primary);
+                    }
+                    .fa-regular{
+                        color: var(--color-primary);
+                    }
                 }
         }
     }
@@ -575,7 +624,8 @@
         h2{
             margin-bottom: 5rem;
         }
-        .d-flex{
+        .noproduct{
+            margin-top: 10rem;
             .cart-img{
                 width: 12rem;
             }
@@ -793,6 +843,7 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
                     color: var(--color-white);
+                    cursor: pointer;
                 }
             }
         }

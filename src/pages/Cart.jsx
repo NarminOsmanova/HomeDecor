@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAll, removeFromCart, updateQuantity } from "../features/cartSlice";
 import { LinkContainer } from "react-router-bootstrap";
+import { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import translations from "../data/langdata";
 
 
 const Cart = () => {
@@ -29,16 +32,17 @@ const Cart = () => {
   const totalItems = cartProducts.reduce((total, product) => total + product.quantity, 0);
   const totalPrice = cartProducts.reduce((total, product) => total + product.quantity * product.price, 0);
 
-
+  const { language } = useContext(LanguageContext);
+  const t = translations[language];
   
   return (
     <section className="cart contain">
        <div className="section-fluid">
-        <Link to={"/"}>Home</Link>
-        <Link to={"/cart "}>Cart </Link>
+        <Link to={"/"}>{t.home}</Link>
+        <Link to={"/cart "}>{t.cart} </Link>
       </div>
       <div className="container-fluid">
-        <h2>SHOPPING CART</h2>
+        <h2>{t.shopping}</h2>
         {totalItems ? <div className="row">
           <div className="col-12 col-lg-9">
            {cartProducts.map((product)=>(
@@ -78,17 +82,17 @@ const Cart = () => {
             </div>   
              : null
            ))}
-           <button onClick={handleDeleteAll} className="primary-button">Delete All</button>
+           <button onClick={handleDeleteAll} className="primary-button">{t.delete}</button>
           </div>
           <div className="col-12 col-lg-3">
             <div className="cart-box">
-              <p className="cart-box_title">SUMMARY</p>
+              <p className="cart-box_title">{t.summary}</p>
               <div className="d-flex justify-content-between">
-                <span>ITEM COUNT</span>
+                <span>{t.count}</span>
                 <span>{totalItems}</span>
               </div>
               <div className="d-flex justify-content-between">
-                <span>TOTAL PRICE</span>
+                <span>{t.price}</span>
                 <span>{totalPrice}$</span>
               </div>
               <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout")}}>CHECKOUT</button>
@@ -96,7 +100,7 @@ const Cart = () => {
           </div>
         </div> : ((<div className="cart-container">
         <div className="container">
-          <div className="d-flex flex-column justify-content-center align-items-center text-center">
+          <div className="d-flex noproduct flex-column justify-content-center align-items-center text-center">
             <div className="cart-img">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/372/372705.png"
