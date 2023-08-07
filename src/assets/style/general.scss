@@ -17,7 +17,40 @@ html{
     box-sizing: border-box;
     font-size: 62.5%;
     scroll-behavior: auto !important;
+   
 }
+::selection{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+// scrollbar ucun
+*::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
+
+  .topbutton button {
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    z-index: 99;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+  
+
 body{
     font-size: 1.6rem !important;
     font-family: Raleway !important;
@@ -26,6 +59,7 @@ body{
     line-height: 2.4rem !important;
     background-color: var(--color-light) !important;
     overflow-x: hidden;
+   
 }
 .modal-content{
     background-color: var(--color-light);

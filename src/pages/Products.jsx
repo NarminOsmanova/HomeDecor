@@ -10,14 +10,6 @@ import translations from "../data/langdata";
 const Products = () => {
   const [product] = useContext(ProductContext);
 
-  // const filterData = (comingItem) => {
-  //   const result = products.filter((item) => {
-  //     return item.category === comingItem;
-  //   });
-  //   setProduct(result);
-  //   console.log(result);
-  // };
-
 const [checkedCategories, setCheckedCategories] = useState([]);
 const [checkedCollections, setCheckedCollections] = useState([]);
 
@@ -42,10 +34,10 @@ const filteredProducts = products.filter((item) => {
   const categoryFilter =
   checkedCategories.length === 0 || checkedCategories.includes(item.category);
 
-const collectionFilter =
+  const collectionFilter =
   checkedCollections.length === 0 ||item.collection.some((coll) => checkedCollections.includes(coll));
 
-return categoryFilter && collectionFilter;
+  return categoryFilter && collectionFilter;
 });
 
   const [categories, setCategories] = useState(true);
@@ -79,7 +71,7 @@ return categoryFilter && collectionFilter;
      }
    };
    // SortProduct funksiyasini cagiraraq siralanmis mehsullari sortedProducts-a menimsedir
-   const sortedProducts = sortProducts(product);
+   const sortedProducts = sortProducts(filteredProducts);
    const handleSortChange = (sortOption) => {
     setSortBy(sortOption);
   };
@@ -288,16 +280,19 @@ return categoryFilter && collectionFilter;
           </div>
           <div className="col-12 col-lg-9">
             <Row>
-              {filteredProducts.map((item) => (
-                <Col md={6} lg={4} sm={6} key={item.id}>
-                  <SingleCard
-                    id={item.id}
-                    img={item.img}
-                    title={item.title}
-                    price={item.price}
-                  />
-                </Col>
-              ))}
+              {sortBy ? (
+                sortedProducts.map((item) => (
+                  <Col md={6} lg={4} sm={6} key={item.id}>
+                    <SingleCard id={item.id} img={item.img} title={item.title} price={item.price} />
+                  </Col>
+                ))
+              ) : (
+                filteredProducts.map((item) => (
+                  <Col md={6} lg={4} sm={6} key={item.id}>
+                    <SingleCard id={item.id} img={item.img} title={item.title} price={item.price} />
+                  </Col>
+                ))
+              )}
             </Row>
           </div>
         </div>

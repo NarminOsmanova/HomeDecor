@@ -21,6 +21,42 @@ html {
   scroll-behavior: auto !important;
 }
 
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.topbutton button {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  z-index: 99;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
 body {
   font-size: 1.6rem !important;
   font-family: Raleway !important;

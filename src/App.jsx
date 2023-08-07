@@ -20,6 +20,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import CollectionsCard from "./components/CollectionsCard";
 import { LanguageProvider } from "./context/LanguageContext";
+import BackToTopButton from "./components/BackToTopButton";
 
 
 
@@ -51,6 +52,7 @@ function App() {
               <Route path="newpassword" element={<NewPassword />} />
             </Route>
           </Routes>
+          <BackToTopButton/>
         </CollectionProvider>
       </ProductProvider>
       </LanguageProvider>
