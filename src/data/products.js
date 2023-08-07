@@ -2,8 +2,8 @@ const products = [
     {
       "id": "1",
       "img": [
+        "https://scontent.fgyd21-1.fna.fbcdn.net/v/t1.6435-9/69184411_2466060476807715_4513914369288962048_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=973b4a&_nc_ohc=8dsaunDrnpsAX99sN6_&_nc_ht=scontent.fgyd21-1.fna&oh=00_AfDEpCYHlb45dlxud9TojvM9IME8k36JD4-nDnVUhZqshA&oe=64D9D8B7",
         "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-d72aws_400x.webp?v=1644690862",
-         "https://scontent.fgyd21-1.fna.fbcdn.net/v/t1.6435-9/69184411_2466060476807715_4513914369288962048_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=973b4a&_nc_ohc=8dsaunDrnpsAX99sN6_&_nc_ht=scontent.fgyd21-1.fna&oh=00_AfDEpCYHlb45dlxud9TojvM9IME8k36JD4-nDnVUhZqshA&oe=64D9D8B7",
          "https://ehome.az/media/products/thumbnails/kreslo-kreslolar-divanlar-kayli-1-ehome.az_31B6djL.jpg",
          "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-zx3l2s_400x.webp?v=1644690863"
       ],

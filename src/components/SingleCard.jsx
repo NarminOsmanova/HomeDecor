@@ -106,7 +106,7 @@ const SingleCard = ({ id, img, title, price }) => {
                           <div className="product-quantity mt-5 d-flex">
                             <input
                               type="button"
-                              defaultValue="-"
+                              defaultValue="-" readOnly
                               className="minus"
                               onClick={() =>{const newCounter = Math.max(1, counter - 1); // Make sure counter doesn't go below 1
                               handleQuantityChange(id, newCounter);
@@ -115,7 +115,7 @@ const SingleCard = ({ id, img, title, price }) => {
                             <input type="text" value={counter} readOnly />
                             <input
                               type="button"
-                              defaultValue="+"
+                              defaultValue="+" readOnly
                               className="plus"
                               onClick={() =>{const newCounter = counter + 1;
                                 handleQuantityChange(id, newCounter);

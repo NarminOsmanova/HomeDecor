@@ -9,7 +9,7 @@ export const ProductProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("https://mocki.io/v1/5aba88e9-a00c-4d09-b65c-1c8f80182e46")
+      .get("https://mocki.io/v1/3bddd945-0017-4a14-947f-344055d64678")
       .then((res) => {
         setProduct(res.data);
       });

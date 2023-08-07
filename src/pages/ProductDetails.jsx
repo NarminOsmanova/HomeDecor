@@ -97,15 +97,15 @@ const ProductDetails = () => {
               <div className="d-flex">
                 <div className="product-quantity d-flex">
                   <input
-                    type="button"
+                    type="button" readOnly
                     defaultValue="-"
                     className="minus"
                     onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
                   />
-                  <input type="text" value={counter} />
+                  <input type="text" value={counter} readOnly/>
                   <input
                     type="button"
-                    defaultValue="+"
+                    defaultValue="+" readOnly
                     className="plus"
                     onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
                   />

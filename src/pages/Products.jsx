@@ -8,15 +8,45 @@ import { LanguageContext } from "../context/LanguageContext";
 import translations from "../data/langdata";
 
 const Products = () => {
-  const [product,setProduct] = useContext(ProductContext);
+  const [product] = useContext(ProductContext);
 
-  const filterData = (comingItem) => {
-    const result = products.filter((item) => {
-      return item.category === comingItem;
-    });
-    setProduct(result);
-    console.log(result);
-  };
+  // const filterData = (comingItem) => {
+  //   const result = products.filter((item) => {
+  //     return item.category === comingItem;
+  //   });
+  //   setProduct(result);
+  //   console.log(result);
+  // };
+
+const [checkedCategories, setCheckedCategories] = useState([]);
+const [checkedCollections, setCheckedCollections] = useState([]);
+
+function handleCategoryChange (event){
+  const {value,checked}=event.target;
+  if(checked){
+    setCheckedCategories(prev=>[...prev,value])
+  }else{
+    setCheckedCategories((prev) => prev.filter((category) => category !== value))
+  }
+}
+const handleCollectionChange = (event) => {
+  const { value, checked } = event.target;
+  if (checked) {
+    setCheckedCollections((prev) => [...prev, value]);
+  } else {
+    setCheckedCollections((prev) => prev.filter((collection) => collection !== value));
+  }
+};
+
+const filteredProducts = products.filter((item) => {
+  const categoryFilter =
+  checkedCategories.length === 0 || checkedCategories.includes(item.category);
+
+const collectionFilter =
+  checkedCollections.length === 0 ||item.collection.some((coll) => checkedCollections.includes(coll));
+
+return categoryFilter && collectionFilter;
+});
 
   const [categories, setCategories] = useState(true);
 
@@ -31,6 +61,28 @@ const Products = () => {
 
   const { language } = useContext(LanguageContext);
   const t = translations[language];
+
+   // A_dan Z_ye ve ya tersine, bahadan ucuza ve ya tersine siralama
+
+   const [sortBy, setSortBy] = useState('');
+   const Products = [...product]; //productun kopyasini goturmek ucun
+   const sortProducts = (product) => {
+     switch (sortBy) {
+       case 'priceAsc':
+         return product.sort((a, b) => a.price - b.price);
+       case 'priceDesc':
+         return product.sort((a, b) => b.price - a.price);
+       case 'nameAsc':
+         return product.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+       default:
+         return Products;
+     }
+   };
+   // SortProduct funksiyasini cagiraraq siralanmis mehsullari sortedProducts-a menimsedir
+   const sortedProducts = sortProducts(product);
+   const handleSortChange = (sortOption) => {
+    setSortBy(sortOption);
+  };
   return (
     <section className="products contain">
       <div className="section-fluid">
@@ -69,18 +121,18 @@ const Products = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
                 >
-                  <li>
-                    <a className="dropdown-item" href="#">
+                  <li onClick={() => handleSortChange('nameAsc')}>
+                    <a className="dropdown-item">
                      {t.popularf}
                     </a>
                   </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
+                  <li onClick={() => handleSortChange('priceAsc')}>
+                    <a className="dropdown-item">
                      {t.cheap}
                     </a>
                   </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
+                  <li onClick={() => handleSortChange('priceDesc')}>
+                    <a className="dropdown-item">
                       {t.expensive}
                     </a>
                   </li>
@@ -105,72 +157,59 @@ const Products = () => {
                 <ul>
                   <li>
                     <label htmlFor="ALL">
-                      <input type="checkbox" name="" id="ALL" /> {t.all}
+                      <input type="checkbox" name="" id="ALL" value={"ALL"} onChange={handleCategoryChange}/> {t.all}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="SOFAS"
-                      onClick={() => {
-                        filterData("sofa");
-                      }}
                     >
-                      <input type="checkbox" name="" id="SOFAS" />
+                      <input type="checkbox" name="" id="SOFAS" value={"sofa"} onChange={handleCategoryChange}/>
                       {t.sofas}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="BEDS"
-                      onClick={() => {
-                        filterData("bed");
-                      }}
+                   
                     >
-                      <input type="checkbox" name="" id="BEDS" />
+                      <input type="checkbox" name="" id="BEDS" value={"bed"} onChange={handleCategoryChange}/>
                       {t.beds}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="RUGS"
-                      onClick={() => {
-                        filterData("rug");
-                      }}
+                  
                     >
-                      <input type="checkbox" name="" id="RUGS" />
+                      <input type="checkbox" name="" id="RUGS" value={"rug"} onChange={handleCategoryChange} />
                       {t.rugs}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="CUSHIONS"
-                      onClick={() => {
-                        filterData("cushion");
-                      }}
+                     
                     >
-                      <input type="checkbox" name="" id="CUSHIONS" />
+                      <input type="checkbox" name="" value={"cushion"} id="CUSHIONS" onChange={handleCategoryChange}/>
                       {t.cushions}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="SHELF"
-                      onClick={() => {
-                        filterData("shelf");
-                      }}
+                     
                     >
-                      <input type="checkbox" name="" id="SHELF" />
+                      <input type="checkbox" name="" id="SHELF" value={"shelf"} onChange={handleCategoryChange} />
                       {t.shelves}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="CHAIRS"
-                      onClick={() => {
-                        filterData("chair");
-                      }}
+                    
                     >
-                      <input type="checkbox" name="" id="CHAIRS" />
+                      <input type="checkbox" name="" id="CHAIRS" value={"chair"} onChange={handleCategoryChange} />
                       {t.chairs}
                     </label>
                   </li>
@@ -198,47 +237,47 @@ const Products = () => {
                   </li>
                   <li>
                     <label htmlFor="BEDROOM">
-                      <input type="checkbox" name="" id="BEDROOM" /> {t.bedroom}
+                      <input type="checkbox" name="" id="BEDROOM" onChange={handleCollectionChange} value={"BEDROOM"}/> {t.bedroom}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIVING">
-                      <input type="checkbox" name="" id="LIVING" /> {t.living}
+                      <input type="checkbox" name="" id="LIVING" onChange={handleCollectionChange} value={"LIVING ROOM"}/> {t.living}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="KITCHEN">
-                      <input type="checkbox" name="" id="KITCHEN" /> {t.kitchen}
+                      <input type="checkbox" name="" id="KITCHEN" onChange={handleCollectionChange} value={"KITCHEN"}/> {t.kitchen}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIBRARY">
-                      <input type="checkbox" name="" id="LIBRARY" /> {t.library}
+                      <input type="checkbox" name="" id="LIBRARY" onChange={handleCollectionChange} value={"LIBRARY"} /> {t.library}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="OFFICE">
-                      <input type="checkbox" name="" id="OFFICE" /> {t.office}
+                      <input type="checkbox" name="" id="OFFICE" onChange={handleCollectionChange} value={"OFFICE"} /> {t.office}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LAUNDRY">
-                      <input type="checkbox" name="" id="LAUNDRY" /> {t.laundry}
+                      <input type="checkbox" name="" id="LAUNDRY"  onChange={handleCollectionChange} value={"LAUNDRY ROOM"}/> {t.laundry}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="GUEST">
-                      <input type="checkbox" name="" id="GUEST" /> {t.guest}
+                      <input type="checkbox" name="" id="GUEST"  onChange={handleCollectionChange} value={"GUEST ROOM"}/> {t.guest}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="FAMILY">
-                      <input type="checkbox" name="" id="FAMILY" /> {t.family}
+                      <input type="checkbox" name="" id="FAMILY"  onChange={handleCollectionChange} value={"FAMILY ROOM"} /> {t.family}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="BATHROOM">
-                      <input type="checkbox" name="" id="BATHROOM" /> {t.bath}
+                      <input type="checkbox" name="" id="BATHROOM" onChange={handleCollectionChange} value={"BATHROOM"} /> {t.bath}
                     </label>
                   </li>
                 </ul>
@@ -249,7 +288,7 @@ const Products = () => {
           </div>
           <div className="col-12 col-lg-9">
             <Row>
-              {product.map((item) => (
+              {filteredProducts.map((item) => (
                 <Col md={6} lg={4} sm={6} key={item.id}>
                   <SingleCard
                     id={item.id}

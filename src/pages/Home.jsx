@@ -2,7 +2,7 @@ import cart from '../assets/img/cart2.svg'
 import img from '../assets/img/Rectangle1.png'
 import about from "../assets/img/aboutimg.png";
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SingleCard from '../components/SingleCard';
 import { ProductContext } from '../context/ProductContext';
 import PopularSlider from '../components/PopularSlider';
@@ -16,6 +16,7 @@ const Home = () => {
   const [product]=useContext(ProductContext)
   const { language } = useContext(LanguageContext);
   const t = translations[language];
+  const navigate=useNavigate()
 
   return (
     <section className="home">
@@ -25,7 +26,8 @@ const Home = () => {
         <div className="container-text position-absolute">
           <h1>{t.defines}</h1>
           <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</span>
-          <button className="primary-button d-flex">
+          <button className="primary-button d-flex" onClick={()=>{ navigate("/products")
+        window.scrollTo(0,0)}}>
             <img src={cart} alt="" />
            {t.shop}</button>
         </div>

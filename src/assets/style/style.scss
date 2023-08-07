@@ -446,6 +446,7 @@
                     border-color: var(--color-primary);
                     border-radius: 0 0 1rem 1rem;
                     li{
+                        cursor: pointer;
                         a{
                         color: var(--color-primary);
                         }
@@ -617,6 +618,39 @@
         h3{
             margin-bottom: 5.9rem;
         }
+        .card{
+            background-color: transparent;
+            .card-img{
+                // max-height: 35rem;
+                max-width: 37rem;
+                object-fit: cover !important;
+            }
+            .card-body{
+                background-color: var(--color-light);
+            }
+            .card-text{
+                color: var(--color-primary);
+                font-weight: 700 !important;
+                margin-bottom: 3.5rem;
+                position: relative;
+            }
+            .card-title{
+                cursor: pointer;
+            }
+            .heart{
+                position: absolute;
+                top: 2rem;
+                right: 3rem;
+                background-color: var(--color-white);
+                padding:6px 10px;
+                .fa-solid{
+                    color: var(--color-primary);
+                }
+                .fa-regular{
+                    color: var(--color-primary);
+                }
+            }
+    }
     }
 }
 .cart{
