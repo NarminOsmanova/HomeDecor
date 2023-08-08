@@ -21,6 +21,16 @@ html {
   scroll-behavior: auto !important;
 }
 
+body {
+  font-size: 1.6rem !important;
+  font-family: Raleway !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  line-height: 2.4rem !important;
+  background-color: var(--color-light) !important;
+  overflow-x: hidden;
+}
+
 ::-moz-selection {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -55,16 +65,6 @@ html {
   z-index: 99;
   background-color: var(--color-primary);
   color: var(--color-white);
-}
-
-body {
-  font-size: 1.6rem !important;
-  font-family: Raleway !important;
-  font-style: normal;
-  font-weight: 500 !important;
-  line-height: 2.4rem !important;
-  background-color: var(--color-light) !important;
-  overflow-x: hidden;
 }
 
 .modal-content {

@@ -41,15 +41,19 @@ const ProductDetails = () => {
   const handleAddToCart = (product) => {
     dispatch(addToCart({...product,quantity: counter} ));
   };
+
   const handleQuantityChange = (productId, quantity) => {
-    if (quantity <= 0) {
-      // If the quantity becomes zero or less, remove the product from the cart
+    const newCounter = counter + quantity;
+
+    if (newCounter <= 0) {
+     
       dispatch(removeFromCart(productId));
     } else {
-      setCounter((prevCounter) => prevCounter + quantity);
-      dispatch(updateQuantity({ id: productId, quantity }));
+      setCounter(newCounter);
+      dispatch(updateQuantity({ id: productId, quantity: newCounter }));
     }
   };
+
   return (
     <section className="productdetails contain">
       <div className="section-fluid">
@@ -100,7 +104,7 @@ const ProductDetails = () => {
                     type="button" readOnly
                     defaultValue="-"
                     className="minus"
-                    onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
+                    onClick={() =>{handleQuantityChange(productdetails.id, -1)}}
                   />
                   <input type="text" value={counter} readOnly/>
                   <input

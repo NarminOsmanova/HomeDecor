@@ -181,14 +181,16 @@ const Account = () => {
             </div>
             <div className="col-12 col-md-8 wishlist">
            { wishlistsItems?.map((wishitem)=>(
-             <div className="wishlist-item d-flex align-items-start" key={wishitem.id}>
-             <div className="wishlist-item_img">
+             <div className="wishlist-item d-flex align-items-start justify-content-between" key={wishitem.id}>
+              <div className="d-flex">
+              <div className="wishlist-item_img">
                <img src={wishitem.img[0]} className="img-fluid" />
              </div>
              <div className="d-flex flex-column justify-content-start">
              <span>{wishitem.title}</span>
              <p className="product-price">{wishitem.price}$</p>
              </div>
+              </div>
              <span className="wishlist-heart" onClick={()=>{handleRemoveFromWish(wishitem.id)}}>
              <i className="fa-solid fa-heart"></i>
              </span>

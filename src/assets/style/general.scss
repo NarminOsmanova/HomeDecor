@@ -17,7 +17,15 @@ html{
     box-sizing: border-box;
     font-size: 62.5%;
     scroll-behavior: auto !important;
-   
+}
+body{
+    font-size: 1.6rem !important;
+    font-family: Raleway !important;
+    font-style: normal;
+    font-weight: 500 !important;
+    line-height: 2.4rem !important;
+    background-color: var(--color-light) !important;
+    overflow-x: hidden;
 }
 ::selection{
     background-color: var(--color-primary);
@@ -49,18 +57,6 @@ html{
     background-color: var(--color-primary);
     color: var(--color-white);
   }
-  
-
-body{
-    font-size: 1.6rem !important;
-    font-family: Raleway !important;
-    font-style: normal;
-    font-weight: 500 !important;
-    line-height: 2.4rem !important;
-    background-color: var(--color-light) !important;
-    overflow-x: hidden;
-   
-}
 .modal-content{
     background-color: var(--color-light);
 }

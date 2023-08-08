@@ -10,6 +10,7 @@ import translations from "../data/langdata";
 const Products = () => {
   const [product] = useContext(ProductContext);
 
+  // categori ve collection-a gore filterlemek
 const [checkedCategories, setCheckedCategories] = useState([]);
 const [checkedCollections, setCheckedCollections] = useState([]);
 
@@ -34,23 +35,25 @@ const filteredProducts = products.filter((item) => {
   const categoryFilter =
   checkedCategories.length === 0 || checkedCategories.includes(item.category);
 
-  const collectionFilter =
+const collectionFilter =
   checkedCollections.length === 0 ||item.collection.some((coll) => checkedCollections.includes(coll));
 
-  return categoryFilter && collectionFilter;
+return categoryFilter && collectionFilter;
 });
 
+// kategori gosterib gizletmek ucun
   const [categories, setCategories] = useState(true);
 
   const showCategories = () => {
     setCategories(!categories);
   };
+  // collection goserib gizletmek ucun
   const [collections, setCollections] = useState(true);
 
   const showCollections = () => {
     setCollections(!collections);
   };
-
+// translate
   const { language } = useContext(LanguageContext);
   const t = translations[language];
 
@@ -280,7 +283,7 @@ const filteredProducts = products.filter((item) => {
           </div>
           <div className="col-12 col-lg-9">
             <Row>
-              {sortBy ? (
+            {sortBy ? (
                 sortedProducts.map((item) => (
                   <Col md={6} lg={4} sm={6} key={item.id}>
                     <SingleCard id={item.id} img={item.img} title={item.title} price={item.price} />

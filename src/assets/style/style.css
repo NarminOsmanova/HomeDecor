@@ -7,6 +7,7 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid var(--color-dustyrose);
+  cursor: pointer;
 }
 .header .nav-top .nav-logo {
   text-align: center;
@@ -21,6 +22,26 @@
 }
 .header .nav-top .nav-cart .badge {
   top: 20%;
+}
+.header .nav-top .search-box {
+  position: absolute;
+  top: 0%; /* Nav-top'un altında yer alacak */
+  width: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  z-index: 100; /* Gerekirse diğer öğelerin üzerinde yer alır */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: 1s all;
+}
+.header .nav-top .search-close-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
 }
 .header .nav-bottom a {
   margin-right: 7rem;
@@ -165,6 +186,79 @@
   display: block;
   font-size: 1.4rem;
   line-height: 1;
+}
+
+.search-results h2 {
+  margin-bottom: 5rem;
+}
+.search-results .results {
+  margin-bottom: 5rem;
+}
+.search-results .d-flex {
+  margin-top: 10rem;
+}
+.search-results .d-flex i {
+  font-size: 4rem;
+}
+.search-results .card {
+  background-color: transparent;
+}
+.search-results .card .card-img {
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
+.search-results .card .card-body {
+  background-color: var(--color-light);
+}
+.search-results .card .card-text {
+  color: var(--color-primary);
+  font-weight: 700 !important;
+  margin-bottom: 3.5rem;
+}
+.search-results .card .card-title {
+  cursor: pointer;
+}
+.search-results .card .overlay {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: -20%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.search-results .card .overlay .shop {
+  background-color: #FFFFFF;
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.search-results .card .overlay .shop:hover {
+  background-color: #9387d9;
+  color: #FFFFFF;
+}
+.search-results .card .overlay .shop i {
+  font-size: 20px;
+}
+.search-results .card:hover .overlay {
+  transition: 0.6s;
+  opacity: 1;
+  bottom: -10%;
+}
+.search-results .card .heart {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--color-white);
+  padding: 6px 10px;
+}
+.search-results .card .heart .fa-solid {
+  color: var(--color-primary);
+}
+.search-results .card .heart .fa-regular {
+  color: var(--color-primary);
 }
 
 .about .container-fluid h2, .about .container-fluid h3 {
@@ -651,6 +745,9 @@
 .cart .container-fluid .col-lg-9 .cart-item .product-price {
   margin-right: 3.5rem;
 }
+.cart .container-fluid .col-lg-9 .primary-button {
+  margin-bottom: 3rem;
+}
 .cart .container-fluid .col-lg-3 .cart-box {
   background-color: #DFD7CF;
   padding: 3rem 3rem 2rem 3rem;
@@ -686,11 +783,14 @@
   max-width: 21.4rem;
 }
 .wishlist .wishlist-item .d-flex {
-  margin: 0 23.5rem 0 2rem;
+  margin: 0 0 0 2rem;
 }
 .wishlist .wishlist-item .d-flex p {
   color: var(--color-primary);
   font-weight: 700 !important;
+}
+.wishlist .wishlist-item span {
+  max-width: 33rem;
 }
 .wishlist .wishlist-item span i {
   color: var(--color-primary);
@@ -922,7 +1022,7 @@
   }
   .about h2, .about h3, .contact h2, .contact h3, .products h2, .products h3, .login h2, .login h3, .checkout h2, .checkout h3,
   .collections h2,
-  .collections h3, .cart h2, .cart h3 {
+  .collections h3, .cart h2, .cart h3, .search-results h2, .search-results h3 {
     font-size: 2.4rem !important;
     line-height: 3.2rem !important;
   }
@@ -1022,6 +1122,36 @@
   }
   .nav-bottom {
     display: none !important;
+  }
+  .nav-bottom {
+    display: none !important;
+  }
+  .mobile-menu-closed {
+    display: none;
+  }
+  .mobile-menu-open {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .mobile-menu-open a {
+    font-size: 3.2rem !important;
+  }
+  .nav-delete {
+    font-size: 2.2rem;
+  }
+  .nav-language {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding-bottom: 8rem;
+  }
+  .nav-language .lang {
+    padding: 1.4rem 3.8rem;
+    border-radius: 5px;
+    border: 1px solid var(--color-dustyrose);
+  }
+  .nav-language p.active {
+    background-color: #d4c8be;
   }
   .about .about-text {
     margin-left: 0 !important;
