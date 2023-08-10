@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import user1 from "../assets/img/user.svg";
 import user2 from "../assets/img/user2.svg";
 import wish from "../assets/img/heart.svg";
@@ -10,6 +10,7 @@ import eye2 from "../assets/img/eye2.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromWish } from "../features/wishSlice";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Account = () => {
   const [icon, setIcon] = useState(eye1);
@@ -34,7 +35,9 @@ const Account = () => {
       setType("password");
     }
   };
-  {console.log(JSON.parse(localStorage.getItem("user")))}
+  {
+    console.log(JSON.parse(localStorage.getItem("user")));
+  }
 
   const user = JSON.parse(localStorage.getItem("user")) || [];
   const [firstName, lastName] = user.length > 0 ? user[0].split(" ") : ["", ""];
@@ -48,6 +51,7 @@ const Account = () => {
     <section className="account contain">
       <div className="section-fluid">
         <Link to={"/"}>Home</Link>
+        <span>|</span>
         <Link to={"/account "}>My account</Link>
       </div>
       {showAccount ? (
@@ -82,7 +86,7 @@ const Account = () => {
                   className="d-flex"
                   onClick={() => {
                     localStorage.clear();
-                    window.location.reload()
+                    window.location.reload();
                   }}
                 >
                   <div className="account-box_image">
@@ -168,10 +172,13 @@ const Account = () => {
                   </div>
                   <span>WISHLIST</span>
                 </div>
-                <div className="d-flex" onClick={() => {
+                <div
+                  className="d-flex"
+                  onClick={() => {
                     localStorage.clear();
-                    window.location.reload()
-                  }}>
+                    window.location.reload();
+                  }}
+                >
                   <div className="account-box_image">
                     <img src={out} alt="" />
                   </div>
@@ -180,22 +187,44 @@ const Account = () => {
               </div>
             </div>
             <div className="col-12 col-md-8 wishlist">
-           { wishlistsItems?.map((wishitem)=>(
-             <div className="wishlist-item d-flex align-items-start justify-content-between" key={wishitem.id}>
-              <div className="d-flex">
-              <div className="wishlist-item_img">
-               <img src={wishitem.img[0]} className="img-fluid" />
-             </div>
-             <div className="d-flex flex-column justify-content-start">
-             <span>{wishitem.title}</span>
-             <p className="product-price">{wishitem.price}$</p>
-             </div>
-              </div>
-             <span className="wishlist-heart" onClick={()=>{handleRemoveFromWish(wishitem.id)}}>
-             <i className="fa-solid fa-heart"></i>
-             </span>
-           </div>
-           ))}
+              {wishlistsItems.length === 0 ? (
+                <div className="no-favorite-products d-flex align-items-center flex-column justify-content-center">
+                  <p className="text-center fw-semibold">There are no favorite products</p>
+                  <LinkContainer to="/products" onClick={() => { window.scrollTo(0, 0) }}>
+              <button
+                className="fw-semibold btn outline-button"
+                size="sm"
+              >
+                RETURN TO SHOP
+              </button>
+            </LinkContainer>
+                </div>
+              ) : (
+                wishlistsItems?.map((wishitem) => (
+                  <div
+                    className="wishlist-item d-flex align-items-start justify-content-between"
+                    key={wishitem.id}
+                  >
+                    <div className="d-flex">
+                      <div className="wishlist-item_img">
+                        <img src={wishitem.img[0]} className="img-fluid" />
+                      </div>
+                      <div className="d-flex flex-column justify-content-start">
+                        <span>{wishitem.title}</span>
+                        <p className="product-price">{wishitem.price}$</p>
+                      </div>
+                    </div>
+                    <span
+                      className="wishlist-heart"
+                      onClick={() => {
+                        handleRemoveFromWish(wishitem.id);
+                      }}
+                    >
+                      <i className="fa-solid fa-heart"></i>
+                    </span>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

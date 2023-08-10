@@ -64,7 +64,7 @@ const translations = {
     theme:"MÖVZU",
     message:"SƏNİN MESAJIN",
     login:"DAXİL OL",
-    reserved:"©2022 Bütün hüquqlar qorunur. Webcoder Agency tərəfindən hazırlanıb",
+    reserved:"©2022 Bütün hüquqlar qorunur. Webcoder Agentliyi tərəfindən hazırlanıb",
     bedroom:"YATAQ OTAĞI",
     living:"OTURMA OTAĞI",
     kitchen:"MƏTBƏX",

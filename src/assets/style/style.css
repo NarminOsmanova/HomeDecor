@@ -330,22 +330,16 @@
   top: 2rem;
   right: 2rem;
 }
+.account .container-fluid .no-favorite-products p {
+  text-transform: uppercase;
+}
+.account .container-fluid .no-favorite-products .outline-button {
+  padding: 1.2rem 0rem !important;
+  width: 50%;
+  font-size: 1.8rem;
+  margin-top: 4rem;
+}
 
-.checkout .section-fluid a:nth-child(2) {
-  opacity: 0.5;
-  margin-right: 2rem;
-  margin-left: 2rem;
-}
-.checkout .section-fluid a:nth-child(2)::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 1.7rem;
-  background-color: var(--color-black);
-  left: 19rem;
-  top: 3px;
-}
 .checkout .container-fluid h2 {
   margin-bottom: 6rem;
 }
@@ -661,7 +655,6 @@
   background-color: transparent;
 }
 .productdetails .similar .card .card-img {
-  max-width: 37rem;
   -o-object-fit: cover !important;
      object-fit: cover !important;
 }
@@ -672,15 +665,43 @@
   color: var(--color-primary);
   font-weight: 700 !important;
   margin-bottom: 3.5rem;
-  position: relative;
 }
 .productdetails .similar .card .card-title {
   cursor: pointer;
 }
+.productdetails .similar .card .overlay {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: -20%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.productdetails .similar .card .overlay .shop {
+  background-color: #FFFFFF;
+  color: black;
+  font-size: 16px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+.productdetails .similar .card .overlay .shop:hover {
+  background-color: #9387d9;
+  color: #FFFFFF;
+}
+.productdetails .similar .card .overlay .shop i {
+  font-size: 20px;
+}
+.productdetails .similar .card:hover .overlay {
+  transition: 0.6s;
+  opacity: 1;
+  bottom: -10%;
+}
 .productdetails .similar .card .heart {
   position: absolute;
   top: 2rem;
-  right: 3rem;
+  right: 2rem;
   background-color: var(--color-white);
   padding: 6px 10px;
 }

@@ -166,16 +166,6 @@ span{
     a:first-child{
         opacity: .5;
         margin-right: 2rem;
-        &::after{
-            content: "";
-            display: block;
-            position: absolute;
-            width: 1px;
-            height: 1.7rem;
-            background-color: var(--color-black);
-            left: 6rem;
-            top: 3px;
-        }
     }
     a:last-child{
         margin-left: 2rem;

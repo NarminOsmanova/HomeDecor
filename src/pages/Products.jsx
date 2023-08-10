@@ -82,6 +82,7 @@ return categoryFilter && collectionFilter;
     <section className="products contain">
       <div className="section-fluid">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/product"}>{t.products}</Link>
       </div>
       <div className="container-fluid">

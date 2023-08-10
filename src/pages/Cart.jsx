@@ -37,8 +37,9 @@ const Cart = () => {
   
   return (
     <section className="cart contain">
-       <div className="section-fluid">
+       <div className="section-fluid d-flex">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/cart "}>{t.cart} </Link>
       </div>
       <div className="container-fluid">

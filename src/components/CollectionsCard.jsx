@@ -16,7 +16,9 @@ const CollectionsCard = () => {
     <section className="products collectiondetails contain">
       <div className="section-fluid">
         <Link to={"/"}>Home</Link>
-        <Link to={"/collections "}>Collections</Link>
+        <span>|</span>
+        <Link to={"/collections"} className="mx-4">Collections</Link>
+        <span>|</span>
         <Link>{collectionsdetails.title}</Link>
       </div>
       <div className="container-fluid">

@@ -15,7 +15,9 @@ const Checkout = () => {
     <section className="checkout contain">
        <div className="section-fluid">
         <Link to={"/"}>Home</Link>
-        <Link to={"/cart "}>Shopping cart </Link>
+        <span>|</span>
+        <Link to={"/cart "} className="mx-4">Shopping cart </Link>
+        <span>|</span>
         <Link to={"/cart/checkout"}>Checkout</Link>
       </div>
         <div className="container-fluid">

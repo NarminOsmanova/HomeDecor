@@ -9,6 +9,8 @@ import cart1 from "../assets/img/cartwhite.svg";
 import SimilarProductsSlider from "../components/SimilarProductsSlider";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart, updateQuantity } from "../features/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetails = () => {
   const [product] = useContext(ProductContext);
@@ -54,11 +56,25 @@ const ProductDetails = () => {
     }
   };
 
+const notify=()=>
+  toast.success('👌 Product has been added to your cart!', {
+    position: "bottom-left",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    });
+
   return (
     <section className="productdetails contain">
       <div className="section-fluid">
         <Link to={"/"}>Home</Link>
-        <Link to={"/products "}>Products</Link>
+        <span>|</span>
+        <Link to={"/products "} className="mx-4">Products</Link>
+        <span>|</span>
         <Link>{productdetails.title}</Link>
       </div>
       <div className="container-fluid">
@@ -124,10 +140,23 @@ const ProductDetails = () => {
                   BUY NOW
                 </button>
                 <button className="outline-button d-flex" onClick={() => {
-                  handleAddToCart(productdetails)}}>
+                  const message= handleAddToCart(productdetails)
+                  notify(message)}}>
                   <img src={cart} alt=""  />
                   ADD TO CART
                 </button>
+                <ToastContainer
+                  position="bottom-left"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="dark"
+                  />
               </div>
             </div>
           </div>

@@ -14,6 +14,7 @@ const t = translations[language];
     <section className="collections contain">
       <div className="section-fluid">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/collections"}>{t.collections}</Link>
       </div>
       <div className="container-fluid">

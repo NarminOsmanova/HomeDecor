@@ -1,5 +1,11 @@
 import Slider from "react-slick";
-import collections from '../data/collection';
+// import collections from '../data/collection';
+import { useNavigate } from "react-router-dom";
+import slugify from "slugify";
+import { useContext } from "react";
+import { CollectionContext } from "../context/CollectionContext";
+import { LanguageContext } from "../context/LanguageContext";
+// import translations from "../data/langdata";
 
 const CollectionSlider = () => {
     var settings = {
@@ -38,19 +44,26 @@ const CollectionSlider = () => {
           }
         ]
       };
+      const {collection, handleItemClick, setSelectedTitle} = useContext(CollectionContext)
+      const { language } = useContext(LanguageContext);
+      // const t = translations[language];
+  const navigate=useNavigate();
   return (
     <Slider {...settings}>
-    {collections.map((item) => (
-      <div className="col-12 col-md-6 col-lg-4 position-relative" key={item.id}>
-        <div className="me-4">
-        <div className="collections-img">
-          <img src={item.img} alt="" />
-          <div className="overlay"></div>
-        </div>
-        <div className="collections-title position-absolute">{item.title}</div>
-        </div>
-      </div>
-    ))}
+          {collection.map((item) => (
+            <div className="col-12 col-md-6 col-lg-4 position-relative" key={item.id}>
+              <div className="collections-img">
+                <img src={item.img} alt="" />
+                <div className="overlay"></div>
+              </div>
+                <div onClick={() => {
+                  navigate(`/collections/${slugify(item.title)}`)
+                  setSelectedTitle(item.title);
+                  handleItemClick(item.title); 
+                  window.scrollTo(0,0)
+                }} className="collections-title position-absolute">{language === "EN" ? item.title : item.titleAZ}</div>
+            </div>
+          ))}
     </Slider>
   )
 }

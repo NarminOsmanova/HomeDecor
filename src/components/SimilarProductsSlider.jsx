@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import slugify from "slugify";
 import { ProductContext } from "../context/ProductContext";
 import Slider from "react-slick";
-import { Card } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+// import { Card } from "react-bootstrap";
+// import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToWish, removeFromWish } from "../features/wishSlice";
-
+import SingleCard from "./SingleCard";
+import { Col } from "react-bootstrap";
 
 const SimilarProductsSlider = ( {id, img, title, price }) => {
     const [product] = useContext(ProductContext);
@@ -67,11 +68,11 @@ const SimilarProductsSlider = ( {id, img, title, price }) => {
       ]
     };
     
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const local = localStorage.getItem("wishItems");
   const wishData = local ? JSON.parse(local).find((item) => item.id === id) : false;
-
   const [wishStatus, setWishStatus] = useState(wishData ? "solid" : "regular");
+
   const findWish = (id) => {
     const local = localStorage.getItem("wishItems");
     const wishData = local ? JSON.parse(local).find((item) => item.id === id) : false;
@@ -90,32 +91,35 @@ const SimilarProductsSlider = ( {id, img, title, price }) => {
   return (
     <Slider {...similarProductSettings}>
     {similarProducts.map((item) => (
-          <Card className="border-0 me-4" key={item.id}>
-          <div className="position-relative">
-            <div className="card-img img-fluid">
-              <Card.Img variant="top" src={item.img[0]} />
-            </div>
-          </div>
-          <Card.Body>
-            <LinkContainer
-              to={`/products/${slugify(item.title)}`}
-              onClick={() => {
-                window.scrollTo(0, 0);
-              }}
-            >
-              <p className="card-title">{item.title}</p>
-            </LinkContainer>
-            <Card.Text className="p-0">{item.price}$</Card.Text>
-          </Card.Body>
-          <div className="heart">
-            <div
-              className="card-heart"
-              onClick={() => { wishClick() }}
-            >
-              <span><i className={`fa-${wishStatus} fa-heart`}></i></span>
-            </div>
-          </div>
-        </Card>
+        //   <Card className="border-0 me-4" key={item.id}>
+        //   <div className="position-relative">
+        //     <div className="card-img img-fluid">
+        //       <Card.Img variant="top" src={item.img[0]} />
+        //     </div>
+        //   </div>
+        //   <Card.Body>
+        //     <LinkContainer
+        //       to={`/products/${slugify(item.title)}`}
+        //       onClick={() => {
+        //         window.scrollTo(0, 0);
+        //       }}
+        //     >
+        //       <p className="card-title">{item.title}</p>
+        //     </LinkContainer>
+        //     <Card.Text className="p-0">{item.price}$</Card.Text>
+        //   </Card.Body>
+        //   <div className="heart">
+        //     <div
+        //       className="card-heart"
+        //       onClick={() => { wishClick() }}
+        //     >
+        //       <span><i className={`fa-${wishStatus} fa-heart`}></i></span>
+        //     </div>
+        //   </div>
+        // </Card>
+        <Col sm={12} md={6} lg={4} key={item.id}>
+        <SingleCard item={item.id}  img={item.img} title={item.title} price={item.price}/>
+        </Col>
     ))}
   </Slider>
   )

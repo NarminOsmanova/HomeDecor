@@ -13,6 +13,7 @@ const Contact = () => {
     <section className="contact contain">
       <div className="section-fluid">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/contact "}>{t.contact} </Link>
       </div>
      <ContactForm/>
