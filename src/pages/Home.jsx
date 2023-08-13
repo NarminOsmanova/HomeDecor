@@ -7,6 +7,7 @@ import SingleCard from '../components/SingleCard';
 import { ProductContext } from '../context/ProductContext';
 import PopularSlider from '../components/PopularSlider';
 import CollectionSlider from '../components/CollectionSlider';
+import CategorySlider from '../components/CategorySlider';
 import { LanguageContext } from '../context/LanguageContext';
 import translations from '../data/langdata';
 import ContactForm from '../components/ContactForm';
@@ -24,21 +25,28 @@ const Home = () => {
       <div className="row">
       <div className="col-12 col-md-5">
         <div className="container-text position-absolute">
-          <h1>{t.defines}</h1>
-          <span>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</span>
-          <button className="primary-button d-flex" onClick={()=>{ navigate("/products")
+          <h1 className='animate__animated animate__fadeInUp animate__bounce animate__slow'>{t.defines}</h1>
+          <span className='animate__animated animate__fadeInUp animate__bounce animate__slow'>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</span>
+          <button className="primary-button d-flex animate__animated animate__fadeInUp animate__bounce animate__slow" onClick={()=>{ navigate("/products")
         window.scrollTo(0,0)}}>
             <img src={cart} alt="" />
            {t.shop}</button>
         </div>
       </div>
       <div className="col-12 col-md-7">
-        <div className="container-img">
+        <div className="container-img animate__animated animate__fadeInRight animate__bounce animated__slow">
           <img src={img} alt="" />
           <div className="overlay d-none d-md-block"></div>
         </div>
       </div>
       </div>
+      </div>
+      <div className="collections category">
+        <div className="container-fluid contain">
+          <div className="row">
+             <CategorySlider/>
+          </div>
+        </div>
       </div>
       <div className="about contain">
       <div className="container-fluid">
@@ -76,7 +84,7 @@ const Home = () => {
         <div className="discount-text d-flex flex-column align-items-center position-absolute">
           <h2 className='text-white'>20% {t.discount}</h2>
           <span className='text-white'>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo </span>
-          <button className="primary-button d-flex">
+          <button className="primary-button btn d-flex" onClick={()=>{navigate("/products"); window.scrollTo(0,0)}}>
             <img src={cart} alt="" className='me-3'/>
            {t.shop}
           </button>

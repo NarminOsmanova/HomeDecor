@@ -95,18 +95,6 @@ toast.success('⭐ Product has been add to your cart!', {
           >
             <i className="fa-solid fa-cart-plus"></i>
           </button>
-          <ToastContainer
-            position="bottom-left"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            />
           <div className="shop">
             <div onClick={handleShow}>
               <i className="fa-solid fa-magnifying-glass-plus"></i>
@@ -187,6 +175,18 @@ toast.success('⭐ Product has been add to your cart!', {
           </div>
         </div>
       </div>
+      <ToastContainer
+            position="bottom-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            />
       <Card.Body>
         <LinkContainer
           to={`/products/${slugify(title)}`}
@@ -201,11 +201,12 @@ toast.success('⭐ Product has been add to your cart!', {
       <div className="heart">
         <div
           className="card-heart"
-          onClick={() => { wishClick() }}
+          onClick={() => { wishClick()}}
         >
           <span><i className={`fa-${wishStatus} fa-heart`}></i></span>
         </div>
       </div>
+      
     </Card>
   );
 };

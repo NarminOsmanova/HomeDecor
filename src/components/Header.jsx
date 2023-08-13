@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   // Dil deyisdirme
-  const [setLanguageButtonClicked] = useState(false);
+  const [languageButtonClicked, setLanguageButtonClicked] = useState(false);
   const { language, changeLanguage } = useContext(LanguageContext);
   const t = translations[language];
 
@@ -134,7 +134,7 @@ const handleSearch = (searchValue) => {
           </div>
           {searchOpen && (
             <div className="search-box">
-              <input type="text" placeholder="search" onChange={(e)=>{handleSearch(e.target.value)}}/>
+              <input type="text" placeholder="SEARCH OUR STORE" onChange={(e)=>{handleSearch(e.target.value)}}/>
               <div className="search-close-icon" onClick={toggleSearchBox}>
               <i className="fa-solid fa-xmark"></i>
               </div>

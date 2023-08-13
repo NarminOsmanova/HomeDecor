@@ -22,6 +22,7 @@ const SearchResults = () => {
     <div className="search-results contain">
       <div className="section-fluid">
         <Link to={"/"}>Home</Link>
+        <span>|</span>
         <Link to={"/searchresult "}>Search results</Link>
       </div>
       <div className="container-fluid">

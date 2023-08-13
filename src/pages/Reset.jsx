@@ -13,7 +13,7 @@ const Reset = () => {
       <span>BACK</span>
     </div>
     <form>
-      <h3>Reset Password</h3>
+      <h3 className="animate__animated animate__fadeInDown">Reset Password</h3>
       <input
         type="email"
         placeholder="E-MAIL ADDRESS"

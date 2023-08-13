@@ -84,6 +84,20 @@
   width: 33rem;
   bottom: 0;
 }
+.home .category {
+  background-color: var(--color-light) !important;
+  padding-bottom: 0 !important;
+}
+.home .category .category-img {
+  height: 18.5rem !important;
+  max-width: 31rem;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  border-radius: 2rem;
+}
+.home .category .category-img img {
+  border-radius: 2rem;
+}
 .home .about {
   margin-bottom: 14rem;
 }
@@ -236,7 +250,7 @@
   margin-bottom: 10px;
 }
 .search-results .card .overlay .shop:hover {
-  background-color: #9387d9;
+  background-color: var(--color-primary);
   color: #FFFFFF;
 }
 .search-results .card .overlay .shop i {
@@ -548,7 +562,7 @@
   margin-bottom: 10px;
 }
 .products .container-fluid .card .overlay .shop:hover {
-  background-color: #9387d9;
+  background-color: var(--color-primary);
   color: #FFFFFF;
 }
 .products .container-fluid .card .overlay .shop i {
@@ -573,20 +587,8 @@
   color: var(--color-primary);
 }
 
-.productdetails .section-fluid a:nth-child(2) {
-  opacity: 0.5;
-  margin-right: 2rem;
-  margin-left: 2rem;
-}
-.productdetails .section-fluid a:nth-child(2)::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 1.7rem;
-  background-color: var(--color-black);
-  left: 15.5rem;
-  top: 3px;
+.productdetails .col-md-5 {
+  margin-right: 6rem;
 }
 .productdetails .slick-prev, .productdetails .slick-next {
   position: absolute;
@@ -636,7 +638,7 @@
   margin-right: 0;
 }
 .productdetails .product_img div {
-  height: 45rem !important;
+  height: 40rem !important;
   overflow: hidden;
 }
 .productdetails .product_img div img {
@@ -665,9 +667,11 @@
   color: var(--color-primary);
   font-weight: 700 !important;
   margin-bottom: 3.5rem;
+  font-size: 2rem;
 }
 .productdetails .similar .card .card-title {
   cursor: pointer;
+  font-size: 2rem;
 }
 .productdetails .similar .card .overlay {
   transition: 0.5s ease;
@@ -687,7 +691,7 @@
   margin-bottom: 10px;
 }
 .productdetails .similar .card .overlay .shop:hover {
-  background-color: #9387d9;
+  background-color: var(--color-primary);
   color: #FFFFFF;
 }
 .productdetails .similar .card .overlay .shop i {
@@ -818,10 +822,10 @@
   font-size: 2.2rem;
 }
 
-.productdetails .col-md-6 p, .modal .col-md-6 p {
+.productdetails .col-md-5 p, .productdetails .col-md-6 p, .modal .col-md-5 p, .modal .col-md-6 p {
   font-family: Didot;
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 700 !important;
   line-height: 44px;
   color: var(--color-black);
 }
@@ -927,22 +931,6 @@
   cursor: pointer;
 }
 
-.collectiondetails .section-fluid a:nth-child(2) {
-  opacity: 0.5;
-  margin-right: 2rem;
-  margin-left: 2rem;
-}
-.collectiondetails .section-fluid a:nth-child(2)::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 1.7rem;
-  background-color: var(--color-black);
-  left: 17rem;
-  top: 3px;
-}
-
 .footer {
   margin-top: 15rem;
 }
@@ -980,9 +968,6 @@
   }
   .cart button {
     padding: 1.7rem 4.4rem !important;
-  }
-  .wishlist .wishlist-item .d-flex {
-    margin: 0 13.5rem 0 2rem;
   }
 }
 @media screen and (max-width: 991px) {
@@ -1025,7 +1010,7 @@
     line-height: 36px !important;
   }
   .home .container-text .primary-button {
-    padding: 1.7rem 7.8rem !important;
+    padding: 1.7rem 1.7rem !important;
   }
   .home .container-img {
     margin-top: 5rem !important;
@@ -1039,11 +1024,11 @@
     line-height: 3.2rem !important;
   }
   .home .discount button {
-    padding: 1.7rem 7.9rem !important;
+    padding: 1.7rem 1.7rem !important;
   }
   .about h2, .about h3, .contact h2, .contact h3, .products h2, .products h3, .login h2, .login h3, .checkout h2, .checkout h3,
   .collections h2,
-  .collections h3, .cart h2, .cart h3, .search-results h2, .search-results h3 {
+  .collections h3, .cart h2, .cart h3, .search-results h2, .search-results h3, .similar h2, .similar h3 {
     font-size: 2.4rem !important;
     line-height: 3.2rem !important;
   }
@@ -1055,6 +1040,9 @@
   }
   .contact form {
     margin-right: 0 !important;
+  }
+  .login form {
+    margin-right: 3rem !important;
   }
   .products h2 {
     margin-bottom: 3rem !important;
@@ -1086,6 +1074,9 @@
   .products .shop-context .shop-filter button span {
     margin-left: 19rem;
     margin-right: 0 !important;
+  }
+  .productdetails .productdetails-content {
+    margin-top: 3rem;
   }
   .login .login_home {
     margin-bottom: 4rem !important;
@@ -1144,9 +1135,6 @@
   .nav-bottom {
     display: none !important;
   }
-  .nav-bottom {
-    display: none !important;
-  }
   .mobile-menu-closed {
     display: none;
   }
@@ -1191,14 +1179,20 @@
     margin: 0 1.5rem 0 1.5rem !important;
   }
   .wishlist .wishlist-item {
-    flex-direction: column;
     position: relative;
+    align-items: center;
+    justify-content: center !important;
   }
   .wishlist .wishlist-item .d-flex {
+    flex-direction: column;
     margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .wishlist .wishlist-item .d-flex span {
     margin: 2.2rem 0 1.5rem 0;
+  }
+  .wishlist .wishlist-item .d-flex .wishlist-item_img {
+    max-width: 100%;
   }
   .wishlist .wishlist-item .wishlist-heart {
     position: absolute;
@@ -1206,5 +1200,20 @@
     top: 2rem;
     background-color: var(--color-white);
     padding: 0.6rem;
+  }
+  .productdetails .buttons {
+    flex-direction: column !important;
+  }
+  .productdetails .buttons .outline-button {
+    margin-top: 1.5rem;
+    margin-left: 0 !important;
+  }
+  .productdetails .product_img div {
+    height: 100% !important;
+  }
+  .productdetails .product_img div img {
+    max-width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
 }/*# sourceMappingURL=style.css.map */

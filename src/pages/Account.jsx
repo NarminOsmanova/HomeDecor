@@ -188,7 +188,7 @@ const Account = () => {
             </div>
             <div className="col-12 col-md-8 wishlist">
               {wishlistsItems.length === 0 ? (
-                <div className="no-favorite-products d-flex align-items-center flex-column justify-content-center">
+                <div className="no-favorite-products mt-5 mt-md-0 d-flex align-items-center flex-column justify-content-center">
                   <p className="text-center fw-semibold">There are no favorite products</p>
                   <LinkContainer to="/products" onClick={() => { window.scrollTo(0, 0) }}>
               <button

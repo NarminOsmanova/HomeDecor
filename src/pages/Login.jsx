@@ -21,7 +21,6 @@ const Login = () => {
       const [alerText, setAlertText] = useState("");
     
       const eye = () => {
-        console.log("jk");
         if (icon === eye1) {
           setIcon(eye2);
           setType("text");
@@ -57,8 +56,8 @@ const Login = () => {
         <span>HOME</span>
       </div>
       <form onSubmit={loginSubmit}>
-              <h3>LOG IN</h3>
-              <p className="text-center text-danger">{alerText}</p>
+              <h3 className="animate__animated animate__fadeInDown ">LOG IN</h3>
+              <p className="text-center text-danger ">{alerText}</p>
               <input
                 type="email"
                 placeholder="E-MAIL ADDRESS"

@@ -19,7 +19,7 @@ const wishSlice = createSlice({
           // Product does not exist in the cart, add it as a new product
           state.wishlistsItems.push(productToAdd);
         }
-        localStorage.setItem("wishItems", JSON.stringify(state.wishlistsItems));
+        localStorage.setItem("wishItems", JSON.stringify([...state.wishlistsItems]));
     },
     removeFromWish: (state, action) => {
       state.wishlistsItems = state.wishlistsItems.filter(

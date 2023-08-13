@@ -21,7 +21,7 @@ const cartSlice = createSlice({
           // Product does not exist in the cart, add it as a new product
           state.products.push(productToAdd);
         }
-        localStorage.setItem("cartItems", JSON.stringify(state.products));
+        localStorage.setItem("cartItems", JSON.stringify([...state.products]));
     },
     removeFromCart: (state, action) => {
       state.products = state.products.filter(

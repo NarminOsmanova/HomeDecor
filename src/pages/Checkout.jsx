@@ -22,7 +22,7 @@ const Checkout = () => {
       </div>
         <div className="container-fluid">
           <div className="row">
-            <h2>CHECKOUT</h2>
+            <h2 className="animate__animated animate__fadeInDown">CHECKOUT</h2>
             <div className="col-12 col-md-7">
               <form>
                 <p className="information">PERSONAL INFORMATION</p>
@@ -144,7 +144,7 @@ const Checkout = () => {
                   <span className="text-center">
                   You will be receiving a confirmation email with order details.
                   </span>
-                  <button onClick={()=>{navigate("/")}} className="primary-button">HOME PAGE</button>
+                  <button onClick={()=>{navigate("/"); window.scrollTo(0,0)}} className="primary-button">HOME PAGE</button>
                 </Modal.Body>
               </Modal>
               </form>

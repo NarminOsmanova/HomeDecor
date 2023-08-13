@@ -5,7 +5,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import translations from "../data/langdata";
-
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2';
 
 const Cart = () => {
   const navigate =useNavigate();
@@ -14,7 +15,24 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (productId) => {
-    dispatch(removeFromCart(productId));
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(removeFromCart(productId));
+        Swal.fire(
+          'Deleted!',
+          'Your product has been deleted.',
+          'success'
+        )
+      }
+    })
   };
 
   const handleDeleteAll = () => {
@@ -43,7 +61,7 @@ const Cart = () => {
         <Link to={"/cart "}>{t.cart} </Link>
       </div>
       <div className="container-fluid">
-        <h2>{t.shopping}</h2>
+        <h2 className="animate__animated animate__fadeInDown">{t.shopping}</h2>
         {totalItems ? <div className="row">
           <div className="col-12 col-lg-9">
            {cartProducts.map((product)=>(
@@ -96,7 +114,7 @@ const Cart = () => {
                 <span>{t.price}</span>
                 <span>{totalPrice}$</span>
               </div>
-              <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout")}}>CHECKOUT</button>
+              <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout") ; window.scrollTo(0,0)}}>CHECKOUT</button>
             </div>
           </div>
         </div> : ((<div className="cart-container">

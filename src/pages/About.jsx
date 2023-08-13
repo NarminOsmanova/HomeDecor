@@ -28,7 +28,7 @@ const About = () => {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <h2>{t.us}</h2>
+          <h2 className="animate__animated animate__fadeInDown">{t.us}</h2>
           <div className="col-12 col-md-6">
             <div className="about-img">
               <img src={about} alt="" />
