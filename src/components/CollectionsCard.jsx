@@ -111,6 +111,7 @@ const CollectionsCard = () => {
                   key={item.id}
                 >
                   <SingleCard
+                    id={item.id}
                     img={item.img}
                     title={item.title}
                     price={item.price}

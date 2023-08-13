@@ -68,7 +68,7 @@ const SimilarProductsSlider = ( ) => {
     <Slider {...similarProductSettings}>
     {similarProducts.map((item) => (
         <Col sm={12} md={6} lg={4} key={item.id}>
-        <SingleCard item={item.id}  img={item.img} title={item.title} price={item.price}/>
+        <SingleCard id={item.id}  img={item.img} title={item.title} price={item.price}/>
         </Col>
     ))}
   </Slider>
