@@ -11,6 +11,17 @@ import Swal from 'sweetalert2';
 const Cart = () => {
   const navigate =useNavigate();
 
+  const handleProceed = () => {
+    const isLoggedIn = localStorage.getItem('email');
+    window.scrollTo(0, 0)
+    if (isLoggedIn) {
+      navigate('/cart/checkout');
+      window.scrollTo(0,0)
+    } else {
+      navigate('/auth/login');
+      window.scrollTo(0,0)
+    }
+  };
   const cartProducts = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
 
@@ -41,7 +52,7 @@ const Cart = () => {
 
   const handleQuantityChange = (productId, quantity) => {
     if (quantity <= 0) {
-      // If the quantity becomes zero or less, remove the product from the cart
+      // eger quantity 0 ve daha asagidirsa ,cartdan product-u sil
       dispatch(removeFromCart(productId));
     } else {
       dispatch(updateQuantity({ id: productId, quantity }));
@@ -72,12 +83,10 @@ const Cart = () => {
               <i className="fa-solid fa-xmark"></i>
               </span>
               <div className="cart-item_img">
-                {/* <img src={product.img[0]} className="img-fluid" alt="" /> */}
-
-                {product.img && product.img.length > 0 ? ( // Check if img exists and has at least one element
+                {product.img && product.img.length > 0 ? ( 
                       <img src={product.img[0]} className="img-fluid" alt="" />
                     ) : (
-                      <img src="default-placeholder-image.png" className="img-fluid" alt="" /> // Replace with a default image or use a placeholder image
+                      <img src="default-placeholder-image.png" className="img-fluid" alt="" /> 
                     )}
               </div>
               <span>{product.title}</span>
@@ -114,7 +123,7 @@ const Cart = () => {
                 <span>{t.price}</span>
                 <span>{totalPrice}$</span>
               </div>
-              <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout") ; window.scrollTo(0,0)}}>CHECKOUT</button>
+              <button className="primary-button form-control" onClick={handleProceed}>CHECKOUT</button>
             </div>
           </div>
         </div> : ((<div className="cart-container">

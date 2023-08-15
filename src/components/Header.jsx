@@ -163,11 +163,11 @@ const handleSearch = (searchValue) => {
           mobileMenuOpen ? "mobile-menu-open" : "mobile-menu-closed"
         }`}
       >
-        <NavLink to={"/"}>{t.home}</NavLink>
-        <NavLink to={"/about"}>{t.about}</NavLink>
-        <NavLink to={"/products"}>{t.products}</NavLink>
-        <NavLink to={"/collections"}>{t.collections}</NavLink>
-        <NavLink to={"/contact"}>{t.contact}</NavLink>
+        <NavLink className="nav-link" to={"/"}>{t.home}</NavLink>
+        <NavLink className="nav-link" to={"/about"}>{t.about}</NavLink>
+        <NavLink className="nav-link" to={"/products"}>{t.products}</NavLink>
+        <NavLink className="nav-link" to={"/collections"}>{t.collections}</NavLink>
+        <NavLink className="nav-link" to={"/contact"}>{t.contact}</NavLink>
       </div>
       <div
         className={`d-block d-sm-none nav-language d-flex ${

@@ -1,6 +1,5 @@
 import cart from '../assets/img/cart2.svg'
 import img from '../assets/img/Rectangle1.png'
-import about from "../assets/img/aboutimg.png";
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SingleCard from '../components/SingleCard';
@@ -11,6 +10,7 @@ import CategorySlider from '../components/CategorySlider';
 import { LanguageContext } from '../context/LanguageContext';
 import translations from '../data/langdata';
 import ContactForm from '../components/ContactForm';
+import AboutContent from '../components/AboutContent';
 
 const Home = () => {
 
@@ -52,29 +52,7 @@ const Home = () => {
       <div className="container-fluid">
         <div className="row">
           <h3>{t.about}</h3>
-          <div className="col-12 col-md-6">
-            <div className="about-img">
-              <img src={about} alt="" />
-            </div>
-          </div>
-          <div className="col-12 col-md-6 align-items-center d-flex">
-            <div className="about-text">
-              <span>
-                Et harum quidem rerum facilis est et expedita distinctio. Nam
-                libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                impedit quo minus id quod maxime placeat facere possimus, omnis
-                voluptas assumenda est, omnis dolor repellendus.<br/> Temporibus
-                autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                saepe eveniet ut et voluptates repudiandae sint et molestiae non
-                recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
-                ut aut reiciendis voluptatibus maiores alias consequatur aut
-                perferendis doloribus asperiores repellat.<br/> Itaque earum rerum
-                hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
-                maiores alias consequatur aut perferendis doloribus asperiores
-                repellat et voluptates repudiandae sint et molestiae non
-              </span>
-            </div>
-          </div>
+         <AboutContent/>
         </div>
       </div>
       </div>

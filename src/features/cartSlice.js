@@ -15,10 +15,10 @@ const cartSlice = createSlice({
         const existingProduct = state.products.find((product) => product.id === productToAdd.id);
   
         if (existingProduct) {
-          // Product already exists in the cart, update its quantity
+          // product cartda movcuddursa sayini artirir
           existingProduct.quantity += productToAdd.quantity;
         } else {
-          // Product does not exist in the cart, add it as a new product
+          // product cartda movcu deyilse yeni product kimi elave edir
           state.products.push(productToAdd);
         }
         localStorage.setItem("cartItems", JSON.stringify([...state.products]));

@@ -43,9 +43,71 @@
   cursor: pointer;
   font-size: 18px;
 }
+.header .nav-bottom {
+  /* Dairə üçün animasiya */
+}
 .header .nav-bottom a {
   margin-right: 7rem;
   margin-bottom: 3.5rem;
+}
+.header .nav-bottom .nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0); /* İlk başda çizgiyi görünməz edir */
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+.header .nav-bottom .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Çizgi sonundan biraz yuxarıda dairənin mərkəzi üçün */
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: scale(0); /* İlk başda dairəni görünməz edir */
+  transition: transform 0.5s;
+}
+.header .nav-bottom .nav-link.active::before {
+  transform: scaleX(1); /* Hover olduğunda çizgiyi çəkir */
+}
+.header .nav-bottom .nav-link.active::after {
+  transform: scale(1); /* Hover olduğunda dairəni göstərir */
+  animation: pulse 1s infinite; /* Dairədə pulsasiya üçün animasiya tətbiq edir */
+}
+.header .nav-bottom .nav-link:hover::before {
+  transform: scaleX(1); /* Hover olduğunda çizgiyi çəkir */
+}
+.header .nav-bottom .nav-link:hover::after {
+  transform: scale(1); /* Hover olduğunda dairəni göstərir */
+  animation: pulse 1s infinite; /* Dairədə pulsasiya üçün animasiya tətbiq edir */
+}
+.header .nav-bottom .nav-link.active::before {
+  transform: scaleX(1); /* Hover olduğunda çizgiyi çəkir */
+}
+.header .nav-bottom .nav-link.active::after {
+  transform: scale(1); /* Hover olduğunda dairəni göstərir */
+  animation: pulse 1s infinite; /* Dairədə pulsasiya üçün animasiya tətbiq edir */
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.header .nav-bottom .nav-link {
+  position: relative;
 }
 
 .home {
@@ -594,7 +656,7 @@
   position: absolute;
   top: 45.5%;
   transform: translateY(-50%);
-  left: 2rem;
+  left: 1rem;
   background: var(--color-primary);
   border: 1px solid var(--color-light);
   color: var(--color-white);
@@ -615,7 +677,7 @@
   line-height: 1;
 }
 .productdetails .slick-next {
-  right: 2rem;
+  right: 1rem;
   left: auto;
 }
 .productdetails .slick-next::after {
@@ -638,12 +700,10 @@
   margin-right: 0;
 }
 .productdetails .product_img div {
-  height: 40rem !important;
   overflow: hidden;
 }
 .productdetails .product_img div img {
   width: 100%;
-  max-height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }

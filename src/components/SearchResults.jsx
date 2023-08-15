@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
+
 import { Col, Row } from "react-bootstrap";
 import SingleCard from "./SingleCard";
 import { Link, useLocation } from "react-router-dom";
 
 const SearchResults = () => {
   const location = useLocation();
-  const { products, searchValue } = location.state || {}; // Use empty object as default
+  const { products, searchValue } = location.state || {};
 
   if (!products || products.length === 0) {
     return (

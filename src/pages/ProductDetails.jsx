@@ -89,7 +89,7 @@ const ProductDetails = () => {
               <Slider {...settings}>
                 {productdetails.img.map((image, index) => (
                   <div key={index} className="product_img">
-                    {/* <ReactImageMagnify
+                    <ReactImageMagnify
                       smallImage={{
                         alt: productdetails.title,
                         isFluidWidth: true,
@@ -102,22 +102,6 @@ const ProductDetails = () => {
                         height: 1800,
                       }}
                       enlargedImagePosition="over"
-                    /> */}
-                    <ReactImageMagnify
-                      {...{
-                        smallImage: {
-                          alt: productdetails.title,
-                          isFluidWidth: true,
-                          src: image,
-                          srcSet: `${image} 768w, ${image} 1280w, ${image} 1920w`
-                        },
-                        largeImage: {
-                          src: image,
-                          width: 1200,
-                          height: 1800,
-                        },
-                        enlargedImagePosition: "beside"
-                      }}
                     />
                   </div>
                 ))}

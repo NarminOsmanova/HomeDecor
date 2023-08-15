@@ -154,7 +154,7 @@ return categoryFilter && collectionFilter;
                   <li>
                     <label htmlFor="ALL">
                       <input type="checkbox" name="" id="ALL"  checked={checkedCategories.length === 0}
-      onChange={() => setCheckedCategories([])} /> {t.all}
+                      onChange={() => setCheckedCategories([])} /> {t.all}
                     </label>
                   </li>
                   <li>

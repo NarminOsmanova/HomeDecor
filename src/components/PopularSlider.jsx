@@ -10,7 +10,7 @@ const PopularSlider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
     const [updateCount, setUpdateCount] = useState(0);
     const sliderRef = useRef();
-    const [slidesToShow, setSlidesToShow] = useState(3);
+    const [slidesToShow, setSlidesToShow] = useState(4);
   
     const settings = {
       dots: false,
@@ -52,14 +52,12 @@ const PopularSlider = () => {
               {product
                 .filter((item) => item.popular === true) // Yalnız popular məhsulları filtirləyirik
                 .map((item) => (
-                  // <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={item.id}>
                     <SingleCard key={item.id}
                     id={item.id}
                     img={item.img}
                     title={item.title}
                     price={item.price}
                   />
-                  // </div>
                 ))}
             </Slider>
             <input
