@@ -70,8 +70,6 @@ const handleSearch = (searchValue) => {
   setSearchResults(filteredProducts);
   navigate("/searchresults", { state: { products: filteredProducts, searchValue:searchValue } });
 };
-
-
   return (
     <header className="contain header">
       <div className="nav-top d-flex justify-content-between">
