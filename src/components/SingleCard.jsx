@@ -10,6 +10,11 @@ import cart from "../assets/img/cartprimary.svg";
 import cart1 from "../assets/img/cartwhite.svg";
 import { addToWish, removeFromWish } from "../features/wishSlice";
 import { useNavigate } from "react-router-dom";
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SingleCard = ({ id, img, title, price }) => {
 
@@ -56,6 +61,23 @@ const SingleCard = ({ id, img, title, price }) => {
       setWishStatus("solid")
     }
   }, [])
+
+  useEffect(() => {
+    AOS.init()
+}, [])
+
+const notify=()=>
+toast.success('⭐ Product has been add to your cart!', {
+  position: "bottom-left",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+  });
+
   return (
     <Card className="border-0 me-4">
       <div className="position-relative">
@@ -63,15 +85,16 @@ const SingleCard = ({ id, img, title, price }) => {
           <Card.Img variant="top" src={img[0]} />
         </div>
         <div className="overlay text-end">
-          <div
+          <button
             className="shop"
             onClick={() => {
-              handleAddToCart({ img, title, price, id, counter });
+              const message=handleAddToCart({ img, title, price, id, counter });
+              notify(message)
               console.log(id);
             }}
           >
             <i className="fa-solid fa-cart-plus"></i>
-          </div>
+          </button>
           <div className="shop">
             <div onClick={handleShow}>
               <i className="fa-solid fa-magnifying-glass-plus"></i>
@@ -79,6 +102,7 @@ const SingleCard = ({ id, img, title, price }) => {
             <Modal
               show={show}
               onHide={handleClose}
+              className="animate__animated animate__rotateInDownRight"
               size="lg"
               centered
               aria-labelledby="contained-modal-title-vcenter"
@@ -147,11 +171,22 @@ const SingleCard = ({ id, img, title, price }) => {
                   </div>
                 </div>
               </Modal.Body>
-           
             </Modal>
           </div>
         </div>
       </div>
+      <ToastContainer
+            position="bottom-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            />
       <Card.Body>
         <LinkContainer
           to={`/products/${slugify(title)}`}
@@ -166,11 +201,12 @@ const SingleCard = ({ id, img, title, price }) => {
       <div className="heart">
         <div
           className="card-heart"
-          onClick={() => { wishClick() }}
+          onClick={() => { wishClick()}}
         >
           <span><i className={`fa-${wishStatus} fa-heart`}></i></span>
         </div>
       </div>
+      
     </Card>
   );
 };

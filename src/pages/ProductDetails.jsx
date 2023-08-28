@@ -8,13 +8,19 @@ import cart from "../assets/img/cartprimary.svg";
 import cart1 from "../assets/img/cartwhite.svg";
 import SimilarProductsSlider from "../components/SimilarProductsSlider";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart, updateQuantity } from "../features/cartSlice";
+import {
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+} from "../features/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetails = () => {
   const [product] = useContext(ProductContext);
   const { slug } = useParams();
   const productdetails = product.find((p) => slugify(p.title) === slug);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const settings = {
     customPaging: function (i) {
@@ -39,27 +45,46 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart({...product,quantity: counter} ));
+    dispatch(addToCart({ ...product, quantity: counter }));
   };
+
   const handleQuantityChange = (productId, quantity) => {
-    if (quantity <= 0) {
-      // If the quantity becomes zero or less, remove the product from the cart
+    const newCounter = counter + quantity;
+    if (newCounter <= 0) {
       dispatch(removeFromCart(productId));
     } else {
-      setCounter((prevCounter) => prevCounter + quantity);
-      dispatch(updateQuantity({ id: productId, quantity }));
+      setCounter(newCounter);
+      dispatch(updateQuantity({ id: productId, quantity: newCounter }));
     }
   };
+
+  const notify = () =>
+    toast.success("👌 Product has been added to your cart!", {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
   return (
     <section className="productdetails contain">
       <div className="section-fluid">
         <Link to={"/"}>Home</Link>
-        <Link to={"/products "}>Products</Link>
+        <span>|</span>
+        <Link to={"/products "} className="mx-4">
+          Products
+        </Link>
+        <span>|</span>
         <Link>{productdetails.title}</Link>
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-5">
+            <p className="d-block d-md-none mb-5">{productdetails.title}</p>
             <div className="productdetails-img">
               <Slider {...settings}>
                 {productdetails.img.map((image, index) => (
@@ -69,7 +94,7 @@ const ProductDetails = () => {
                         alt: productdetails.title,
                         isFluidWidth: true,
                         src: image, // Use 'image' instead of 'productdetails.images'
-                        srcSet: `${image} 768w, ${image} 1280w, ${image} 1920w`,
+                        srcSet: `${image} 568w, ${image} 1080w, ${image} 1920w`,
                       }}
                       largeImage={{
                         src: image,
@@ -85,7 +110,7 @@ const ProductDetails = () => {
           </div>
           <div className="col-12 col-md-6">
             <div className="productdetails-content">
-              <p>{productdetails.title}</p>
+              <p className="d-none d-md-block">{productdetails.title}</p>
               <span className="product-desc">{productdetails.description}</span>
               <span className="product-color">COLORS</span>
               <div className="product-color_select d-flex">
@@ -97,33 +122,60 @@ const ProductDetails = () => {
               <div className="d-flex">
                 <div className="product-quantity d-flex">
                   <input
-                    type="button" readOnly
+                    type="button"
+                    readOnly
                     defaultValue="-"
                     className="minus"
-                    onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
+                    onClick={() => {
+                      handleQuantityChange(productdetails.id, -1);
+                    }}
                   />
-                  <input type="text" value={counter} readOnly/>
+                  <input type="text" value={counter} readOnly />
                   <input
                     type="button"
-                    defaultValue="+" readOnly
+                    defaultValue="+"
+                    readOnly
                     className="plus"
-                    onClick={() =>{handleQuantityChange(productdetails.id, 1)}}
+                    onClick={() => {
+                      handleQuantityChange(productdetails.id, 1);
+                    }}
                   />
                 </div>
               </div>
               <h3 className="product-price">{productdetails.price}$</h3>
-              <div className="d-flex">
-                <button className="primary-button d-flex" onClick={() => {
-                  handleAddToCart(productdetails)
-                  navigate("/cart")}}>
+              <div className="d-flex buttons">
+                <button
+                  className="primary-button d-flex"
+                  onClick={() => {
+                    handleAddToCart(productdetails);
+                    navigate("/cart");
+                  }}
+                >
                   <img src={cart1} alt="" />
                   BUY NOW
                 </button>
-                <button className="outline-button d-flex" onClick={() => {
-                  handleAddToCart(productdetails)}}>
-                  <img src={cart} alt=""  />
+                <button
+                  className="outline-button d-flex"
+                  onClick={() => {
+                    const message = handleAddToCart(productdetails);
+                    notify(message);
+                  }}
+                >
+                  <img src={cart} alt="" />
                   ADD TO CART
                 </button>
+                <ToastContainer
+                  position="bottom-left"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="dark"
+                />
               </div>
             </div>
           </div>

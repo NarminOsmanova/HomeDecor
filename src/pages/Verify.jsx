@@ -12,7 +12,7 @@ const Verify = () => {
         <span>BACK</span>
       </div>
       <form>
-        <h3>VERIFICATION</h3>
+        <h3 className="animate__animated animate__fadeInDown ">VERIFICATION</h3>
         <input
           type="text"
           placeholder="ENTER VERIFICATION NUMBER"

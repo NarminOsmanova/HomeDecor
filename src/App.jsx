@@ -20,6 +20,8 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import CollectionsCard from "./components/CollectionsCard";
 import { LanguageProvider } from "./context/LanguageContext";
+import BackToTopButton from "./components/BackToTopButton";
+import SearchResults from "./components/SearchResults";
 
 
 
@@ -41,6 +43,7 @@ function App() {
               <Route path="/account" element={<Account />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/cart/checkout" element={<Checkout />} />
+              <Route path="/searchresults" element={<SearchResults />} />
               <Route path="/*" element={<NotFound />} />
             </Route>
             <Route path="/auth" element={<AuthLayout />}>
@@ -51,6 +54,7 @@ function App() {
               <Route path="newpassword" element={<NewPassword />} />
             </Route>
           </Routes>
+          <BackToTopButton/>
         </CollectionProvider>
       </ProductProvider>
       </LanguageProvider>

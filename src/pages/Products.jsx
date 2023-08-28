@@ -10,14 +10,7 @@ import translations from "../data/langdata";
 const Products = () => {
   const [product] = useContext(ProductContext);
 
-  // const filterData = (comingItem) => {
-  //   const result = products.filter((item) => {
-  //     return item.category === comingItem;
-  //   });
-  //   setProduct(result);
-  //   console.log(result);
-  // };
-
+  // categori ve collection-a gore filterlemek
 const [checkedCategories, setCheckedCategories] = useState([]);
 const [checkedCollections, setCheckedCollections] = useState([]);
 
@@ -48,17 +41,19 @@ const collectionFilter =
 return categoryFilter && collectionFilter;
 });
 
+// kategori gosterib gizletmek ucun
   const [categories, setCategories] = useState(true);
 
   const showCategories = () => {
     setCategories(!categories);
   };
+  // collection goserib gizletmek ucun
   const [collections, setCollections] = useState(true);
 
   const showCollections = () => {
     setCollections(!collections);
   };
-
+// translate
   const { language } = useContext(LanguageContext);
   const t = translations[language];
 
@@ -79,7 +74,7 @@ return categoryFilter && collectionFilter;
      }
    };
    // SortProduct funksiyasini cagiraraq siralanmis mehsullari sortedProducts-a menimsedir
-   const sortedProducts = sortProducts(product);
+   const sortedProducts = sortProducts(filteredProducts);
    const handleSortChange = (sortOption) => {
     setSortBy(sortOption);
   };
@@ -87,12 +82,13 @@ return categoryFilter && collectionFilter;
     <section className="products contain">
       <div className="section-fluid">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/product"}>{t.products}</Link>
       </div>
       <div className="container-fluid">
         <div className="shop-context d-block d-md-flex">
           <div>
-            <h2>{t.products}</h2>
+            <h2 className="animate__animated animate__fadeInDown">{t.products}</h2>
             <span>
               Et harum quidem rerum facilis est et expedita distinctio. Nam
               libero tempore, cum soluta nobis est eligendi optio cumque nihil
@@ -123,7 +119,7 @@ return categoryFilter && collectionFilter;
                 >
                   <li onClick={() => handleSortChange('nameAsc')}>
                     <a className="dropdown-item">
-                     {t.popularf}
+                     {t.alfabet}
                     </a>
                   </li>
                   <li onClick={() => handleSortChange('priceAsc')}>
@@ -157,14 +153,15 @@ return categoryFilter && collectionFilter;
                 <ul>
                   <li>
                     <label htmlFor="ALL">
-                      <input type="checkbox" name="" id="ALL" value={"ALL"} onChange={handleCategoryChange}/> {t.all}
+                      <input type="checkbox" name="" id="ALL"  checked={checkedCategories.length === 0}
+                      onChange={() => setCheckedCategories([])} /> {t.all}
                     </label>
                   </li>
                   <li>
                     <label
                       htmlFor="SOFAS"
                     >
-                      <input type="checkbox" name="" id="SOFAS" value={"sofa"} onChange={handleCategoryChange}/>
+                      <input type="checkbox" name="" id="SOFAS" checked={checkedCategories.includes("sofa")}  value={"sofa"} onChange={handleCategoryChange}/>
                       {t.sofas}
                     </label>
                   </li>
@@ -173,7 +170,7 @@ return categoryFilter && collectionFilter;
                       htmlFor="BEDS"
                    
                     >
-                      <input type="checkbox" name="" id="BEDS" value={"bed"} onChange={handleCategoryChange}/>
+                      <input type="checkbox" name="" id="BEDS" value={"bed"} checked={checkedCategories.includes("bed")} onChange={handleCategoryChange}/>
                       {t.beds}
                     </label>
                   </li>
@@ -182,7 +179,7 @@ return categoryFilter && collectionFilter;
                       htmlFor="RUGS"
                   
                     >
-                      <input type="checkbox" name="" id="RUGS" value={"rug"} onChange={handleCategoryChange} />
+                      <input type="checkbox" name="" id="RUGS" value={"rug"} onChange={handleCategoryChange} checked={checkedCategories.includes("rug")} />
                       {t.rugs}
                     </label>
                   </li>
@@ -191,7 +188,7 @@ return categoryFilter && collectionFilter;
                       htmlFor="CUSHIONS"
                      
                     >
-                      <input type="checkbox" name="" value={"cushion"} id="CUSHIONS" onChange={handleCategoryChange}/>
+                      <input type="checkbox" name="" checked={checkedCategories.includes("cushion")} value={"cushion"} id="CUSHIONS" onChange={handleCategoryChange}/>
                       {t.cushions}
                     </label>
                   </li>
@@ -200,7 +197,7 @@ return categoryFilter && collectionFilter;
                       htmlFor="SHELF"
                      
                     >
-                      <input type="checkbox" name="" id="SHELF" value={"shelf"} onChange={handleCategoryChange} />
+                      <input type="checkbox" name="" id="SHELF" value={"shelf"} onChange={handleCategoryChange} checked={checkedCategories.includes("shelf")} />
                       {t.shelves}
                     </label>
                   </li>
@@ -209,7 +206,7 @@ return categoryFilter && collectionFilter;
                       htmlFor="CHAIRS"
                     
                     >
-                      <input type="checkbox" name="" id="CHAIRS" value={"chair"} onChange={handleCategoryChange} />
+                      <input type="checkbox" name="" id="CHAIRS" value={"chair"} onChange={handleCategoryChange} checked={checkedCategories.includes("chair")}/>
                       {t.chairs}
                     </label>
                   </li>
@@ -232,52 +229,53 @@ return categoryFilter && collectionFilter;
                 <ul>
                   <li>
                     <label htmlFor="all">
-                      <input type="checkbox" name="" id="all" /> {t.all}
+                      <input type="checkbox" name="" id="all"  checked={checkedCollections.length === 0}
+                    onChange={() => setCheckedCollections([])}/> {t.all}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="BEDROOM">
-                      <input type="checkbox" name="" id="BEDROOM" onChange={handleCollectionChange} value={"BEDROOM"}/> {t.bedroom}
+                      <input type="checkbox" name="" id="BEDROOM" checked={checkedCollections.includes("BEDROOM")} onChange={handleCollectionChange} value={"BEDROOM"}/> {t.bedroom}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIVING">
-                      <input type="checkbox" name="" id="LIVING" onChange={handleCollectionChange} value={"LIVING ROOM"}/> {t.living}
+                      <input type="checkbox" name="" id="LIVING" checked={checkedCollections.includes("LIVING ROOM")} onChange={handleCollectionChange} value={"LIVING ROOM"}/> {t.living}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="KITCHEN">
-                      <input type="checkbox" name="" id="KITCHEN" onChange={handleCollectionChange} value={"KITCHEN"}/> {t.kitchen}
+                      <input type="checkbox" name="" id="KITCHEN" checked={checkedCollections.includes("KITCHEN")} onChange={handleCollectionChange} value={"KITCHEN"}/> {t.kitchen}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LIBRARY">
-                      <input type="checkbox" name="" id="LIBRARY" onChange={handleCollectionChange} value={"LIBRARY"} /> {t.library}
+                      <input type="checkbox" name="" id="LIBRARY" checked={checkedCollections.includes("LIBRARY")}  onChange={handleCollectionChange} value={"LIBRARY"} /> {t.library}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="OFFICE">
-                      <input type="checkbox" name="" id="OFFICE" onChange={handleCollectionChange} value={"OFFICE"} /> {t.office}
+                      <input type="checkbox" name="" id="OFFICE" checked={checkedCollections.includes("OFFICE")}  onChange={handleCollectionChange} value={"OFFICE"} /> {t.office}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="LAUNDRY">
-                      <input type="checkbox" name="" id="LAUNDRY"  onChange={handleCollectionChange} value={"LAUNDRY ROOM"}/> {t.laundry}
+                      <input type="checkbox" name="" id="LAUNDRY" checked={checkedCollections.includes("LAUNDRY ROOM")}   onChange={handleCollectionChange} value={"LAUNDRY ROOM"}/> {t.laundry}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="GUEST">
-                      <input type="checkbox" name="" id="GUEST"  onChange={handleCollectionChange} value={"GUEST ROOM"}/> {t.guest}
+                      <input type="checkbox" name="" id="GUEST" checked={checkedCollections.includes("GUEST ROOM")}  onChange={handleCollectionChange} value={"GUEST ROOM"}/> {t.guest}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="FAMILY">
-                      <input type="checkbox" name="" id="FAMILY"  onChange={handleCollectionChange} value={"FAMILY ROOM"} /> {t.family}
+                      <input type="checkbox" name="" id="FAMILY"  onChange={handleCollectionChange} checked={checkedCollections.includes("FAMILY ROOM")}  value={"FAMILY ROOM"} /> {t.family}
                     </label>
                   </li>
                   <li>
                     <label htmlFor="BATHROOM">
-                      <input type="checkbox" name="" id="BATHROOM" onChange={handleCollectionChange} value={"BATHROOM"} /> {t.bath}
+                      <input type="checkbox" name="" id="BATHROOM" onChange={handleCollectionChange} value={"BATHROOM"} checked={checkedCollections.includes("BATHROOM")} /> {t.bath}
                     </label>
                   </li>
                 </ul>
@@ -288,16 +286,19 @@ return categoryFilter && collectionFilter;
           </div>
           <div className="col-12 col-lg-9">
             <Row>
-              {filteredProducts.map((item) => (
-                <Col md={6} lg={4} sm={6} key={item.id}>
-                  <SingleCard
-                    id={item.id}
-                    img={item.img}
-                    title={item.title}
-                    price={item.price}
-                  />
-                </Col>
-              ))}
+            {sortBy ? (
+                sortedProducts.map((item) => (
+                  <Col md={6} lg={4} sm={6} key={item.id}>
+                    <SingleCard id={item.id} img={item.img} title={item.title} price={item.price} />
+                  </Col>
+                ))
+              ) : (
+                filteredProducts.map((item) => (
+                  <Col md={6} lg={4} sm={6} key={item.id}>
+                    <SingleCard id={item.id} img={item.img} title={item.title} price={item.price} />
+                  </Col>
+                ))
+              )}
             </Row>
           </div>
         </div>

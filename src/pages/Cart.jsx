@@ -5,16 +5,45 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import translations from "../data/langdata";
-
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2';
 
 const Cart = () => {
   const navigate =useNavigate();
 
+  const handleProceed = () => {
+    const isLoggedIn = localStorage.getItem('email');
+    window.scrollTo(0, 0)
+    if (isLoggedIn) {
+      navigate('/cart/checkout');
+      window.scrollTo(0,0)
+    } else {
+      navigate('/auth/login');
+      window.scrollTo(0,0)
+    }
+  };
   const cartProducts = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
 
   const handleRemoveFromCart = (productId) => {
-    dispatch(removeFromCart(productId));
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(removeFromCart(productId));
+        Swal.fire(
+          'Deleted!',
+          'Your product has been deleted.',
+          'success'
+        )
+      }
+    })
   };
 
   const handleDeleteAll = () => {
@@ -23,7 +52,7 @@ const Cart = () => {
 
   const handleQuantityChange = (productId, quantity) => {
     if (quantity <= 0) {
-      // If the quantity becomes zero or less, remove the product from the cart
+      // eger quantity 0 ve daha asagidirsa ,cartdan product-u sil
       dispatch(removeFromCart(productId));
     } else {
       dispatch(updateQuantity({ id: productId, quantity }));
@@ -37,12 +66,13 @@ const Cart = () => {
   
   return (
     <section className="cart contain">
-       <div className="section-fluid">
+       <div className="section-fluid d-flex">
         <Link to={"/"}>{t.home}</Link>
+        <span>|</span>
         <Link to={"/cart "}>{t.cart} </Link>
       </div>
       <div className="container-fluid">
-        <h2>{t.shopping}</h2>
+        <h2 className="animate__animated animate__fadeInDown">{t.shopping}</h2>
         {totalItems ? <div className="row">
           <div className="col-12 col-lg-9">
            {cartProducts.map((product)=>(
@@ -53,12 +83,10 @@ const Cart = () => {
               <i className="fa-solid fa-xmark"></i>
               </span>
               <div className="cart-item_img">
-                {/* <img src={product.img[0]} className="img-fluid" alt="" /> */}
-
-                {product.img && product.img.length > 0 ? ( // Check if img exists and has at least one element
+                {product.img && product.img.length > 0 ? ( 
                       <img src={product.img[0]} className="img-fluid" alt="" />
                     ) : (
-                      <img src="default-placeholder-image.png" className="img-fluid" alt="" /> // Replace with a default image or use a placeholder image
+                      <img src="default-placeholder-image.png" className="img-fluid" alt="" /> 
                     )}
               </div>
               <span>{product.title}</span>
@@ -95,7 +123,7 @@ const Cart = () => {
                 <span>{t.price}</span>
                 <span>{totalPrice}$</span>
               </div>
-              <button className="primary-button form-control" onClick={()=>{navigate("/cart/checkout")}}>CHECKOUT</button>
+              <button className="primary-button form-control" onClick={handleProceed}>CHECKOUT</button>
             </div>
           </div>
         </div> : ((<div className="cart-container">

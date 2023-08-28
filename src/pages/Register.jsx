@@ -53,8 +53,8 @@ const Register = () => {
         <span>HOME</span>
       </div>
       <form onSubmit={loginSubmit}>
-        <h3>REGISTER</h3>
-        <p className="text-center text-danger">{alerText}</p>
+        <h3 className="animate__animated animate__fadeInDown ">REGISTER</h3>
+        <p className="text-center text-danger animate__animated animate__fadeInUp">{alerText}</p>
         <input
           type="text"
           name=""

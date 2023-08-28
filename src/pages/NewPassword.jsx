@@ -12,7 +12,7 @@ const NewPassword = () => {
         <span>BACK</span>
       </div>
       <form>
-        <h3>NEW PASSWORD</h3>
+        <h3 className="animate__animated animate__fadeInDown ">NEW PASSWORD</h3>
         <input
           type="password"
           placeholder="ENTER NEW PASSWORD"

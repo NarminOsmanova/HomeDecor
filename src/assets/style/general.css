@@ -31,6 +31,42 @@ body {
   overflow-x: hidden;
 }
 
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.topbutton button {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  z-index: 99;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
 .modal-content {
   background-color: var(--color-light);
 }
@@ -155,16 +191,6 @@ span {
 .section-fluid a:first-child {
   opacity: 0.5;
   margin-right: 2rem;
-}
-.section-fluid a:first-child::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 1px;
-  height: 1.7rem;
-  background-color: var(--color-black);
-  left: 6rem;
-  top: 3px;
 }
 .section-fluid a:last-child {
   margin-left: 2rem;

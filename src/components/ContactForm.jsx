@@ -19,7 +19,7 @@ const ContactForm = () => {
   return (
     <div className="container-fluid">
         <div className="row">
-          <h2>{t.contact}</h2>
+          <h2 className="animate__animated animate__fadeInDown">{t.contact}</h2>
           <div className="col-12 col-md-6">
             <form>
               <input

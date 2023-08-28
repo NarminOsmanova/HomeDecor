@@ -24,12 +24,49 @@ export const CollectionProvider = ({ children }) => {
   ? product.filter((item) => item.collection.includes(selectedTitle))
   : product;
 
+  const [checkedCategories, setCheckedCategories] = useState([]);
+  const [checkedCollections, setCheckedCollections] = useState([]);
+  const handleCategoryChange= (event)=>{
+    const {value,checked}=event.target;
+    if(checked){
+      setCheckedCategories(prev=>[...prev,value])
+    }else{
+      setCheckedCategories((prev) => prev.filter((category) => category !== value))
+    }
+  }
+  const handleCollectionChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+      setCheckedCollections((prev) => [...prev, value]);
+    } else {
+      setCheckedCollections((prev) => prev.filter((collection) => collection !== value));
+    }
+  };
+  
+const getFilteredProducts = filteredProducts.filter((item) => {
+  const categoryFilter =
+  checkedCategories.length === 0 || checkedCategories.includes(item.category);
+
+const collectionFilter =
+  checkedCollections.length === 0 ||item.collection.some((coll) => checkedCollections.includes(coll));
+
+return categoryFilter && collectionFilter;
+});
+
   const values = {
     handleItemClick,
     filteredProducts,
+    getFilteredProducts,
+    handleCategoryChange,
+    handleCollectionChange,
+    checkedCategories,
+    setCheckedCategories,
     collection,
     setCollections,
     showCollectionCard,
+    checkedCollections,
+    setCheckedCollections,
+    selectedTitle,
     setSelectedTitle
   };
 

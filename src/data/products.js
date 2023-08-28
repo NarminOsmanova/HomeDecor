@@ -2,7 +2,7 @@ const products = [
     {
       "id": "1",
       "img": [
-        "https://scontent.fgyd21-1.fna.fbcdn.net/v/t1.6435-9/69184411_2466060476807715_4513914369288962048_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=973b4a&_nc_ohc=8dsaunDrnpsAX99sN6_&_nc_ht=scontent.fgyd21-1.fna&oh=00_AfDEpCYHlb45dlxud9TojvM9IME8k36JD4-nDnVUhZqshA&oe=64D9D8B7",
+        "https://meerveil.com/cdn/shop/products/1.45_a456e745-8524-4ac2-b474-172b010ea058_400x.jpg?v=1642991666",
         "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-d72aws_400x.webp?v=1644690862",
          "https://ehome.az/media/products/thumbnails/kreslo-kreslolar-divanlar-kayli-1-ehome.az_31B6djL.jpg",
          "https://woodenbazar.com/cdn/shop/products/elvie-arm-chair-with-ottoman-in-yellow-colour-by-the-royal-nest-elvie-arm-chair-with-ottoman-in-yell-zx3l2s_400x.webp?v=1644690863"
@@ -13,7 +13,7 @@ const products = [
         "FAMILY ROOM",
         "LIBRARY"
       ],
-      "title": "Yellow Kayli sofa",
+      "title": "Yellow New Fabric Tub Lounge Sofa Seat",
       "description": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.  ",
       "price": "140.00",
       "status": true,
@@ -42,10 +42,10 @@ const products = [
     {
       "id": "3",
       "img": [
+        "https://m.media-amazon.com/images/I/71o+gVpOVQL._AC_SL1500_.jpg",
         "https://m.media-amazon.com/images/I/71BuQLCNAVL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/81EWBco4eCL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/81XHQP7HOxL._AC_SX425_.jpg",
-        "https://m.media-amazon.com/images/I/71chw14sUaL._AC_SX425_.jpg"
       ],
       "category": "cushion",
       "collection": [
@@ -82,9 +82,9 @@ const products = [
     {
       "id": "5",
       "img": [
+        "https://ae04.alicdn.com/kf/S0c0e8dbb694c46ae850fe9b0c49d14bfV.jpg",
         "https://m.media-amazon.com/images/I/61T79qFbrBL.__AC_SX300_SY300_QL70_ML2_.jpg",
         "https://m.media-amazon.com/images/I/41PCuD2oiFL._AC_SX466_.jpg",
-        "https://m.media-amazon.com/images/I/51ZlJ1FOtYL._AC_SX466_.jpg",
         "https://m.media-amazon.com/images/I/617rF0ydrdL._AC_SX466_.jpg",
       ],
       "category": "sofa",
@@ -132,7 +132,7 @@ const products = [
         "OFFICE",
         "GUEST ROOM",
       ],
-      "title": "Metal Leg Rocking Chairs",
+      "title": "Single Metal Leg Rocking Chairs",
       "description": "The loveseat tub sofa chair with golden metal legs combines sumptuous padding and generous proportions with a lighter-than-air look. The stitching pipe design takes inspiration from modern apartment living ",
       "price": "150.00",
       "status": true,
@@ -261,9 +261,9 @@ const products = [
     {
       "id": "14",
       "img": [
+        "https://ak1.ostkcdn.com/images/products/is/images/direct/d8c7d3372726f7cc1665bb8324caf47d1148df5b/Triangle-Tall-Cabinet-with-3-Drawers-and-Adjustable-Shelves%2C-White.jpg",
         "https://m.media-amazon.com/images/I/81xxaviuRzL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/716VuujUiCL._AC_SX425_.jpg",
-        "https://m.media-amazon.com/images/I/71H3XryFayL._AC_SX425_.jpg",
         "https://m.media-amazon.com/images/I/61Co-b0ZD7L._AC_SX425_.jpg"
       ],
       "category": "shelf",
